@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Section</title>
+</head>
+<body>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+  <style>
+    
+    *{
+      margin: 0;
+      padding: 0;
+    }
+ /*  body {
+  max-width: 100%;
+  height: 100%;
+overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+}
+ */
+
+ 
+ body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrollbars */
+  width: 100%;
+  height: 100%;
+}
+
+
+
+    .flex-column {
+      gap: 13px;
+      flex-direction: column !important;
+  }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -100%; /* Start completely hidden */
+      width: 50%;
+      height: 100%;
+      color: white;
+      background-color: #FFFFFF;
+      overflow-y: auto;
+      transition: all 0.3s ease;
+      z-index: 1050;
+    }
+
+    .p-3 {
+      font-size: 46px;
+      padding: 1rem !important;
+  }
+
+  @media (min-width: 992px) {
+    .navbar-expand-lg .navbar-collapse {
+        right: 36px;
+        position: relative;
+        display: flex !important
+;
+        flex-basis: auto;
+    }
+}
+    
+    .sidebar.active {
+      left: 0; /* Fully visible when active */
+    }
+    
+    .content.shifted {
+      margin-left: 250px; /* Adjust margin if needed for shifted content */
+    }
+    
+
+    .sidebar .nav-link {
+      color: rgb(0, 0, 0);
+    }
+
+    .content {
+      margin-left: 0;
+      transition: margin-left 0.3s ease;
+    }
+
+    @media (min-width: 992px) {
+      .navbar-expand-lg .navbar-nav {
+          gap: 32px;
+          flex-direction: row;
+      }
+  }
+
+    .content.shifted {
+      margin-left: 250px;
+    }
+
+    .navbar-toggler-icon {
+      cursor: pointer;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: -36px;
+      right: 10px;
+      font-size: 109px;
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+    }
+    .content.shifted {
+      margin-left: 100%; /* Match the sidebar width */
+    }
+    
+
+    @media (max-width: 768px) {
+      .logo {
+        height: 119px;
+        width: 136px;
+        position: relative;
+        right: 7px;
+        bottom: 26px;
+      }
+
+      .navbar {
+        height: 69px;
+        width: 181%;
+      }
+
+      .navbar-toggler {
+        top: -18px;
+        position: relative;
+      }
+    }
+    .navbar-nav .nav-link {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      color: #000000f9; /* Dark black color for normal state */
+      font-weight: bold; /* Bold text */
+      transition: color 0.3s ease;
+    }
+    
+    .navbar-nav .nav-link:hover {
+      color: #C61300; /* Hover color */
+    }
+    
+    .navbar-nav .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px; /* Thickness of the underline */
+      background: #C61300; /* Underline color */
+      left: 0;
+      bottom: -5px; /* Space between text and underline */
+      transition: width 0.3s ease;
+    }
+    
+    .navbar-nav .nav-link:hover::after {
+      width: 100%;
+    }
+    
+  </style>
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="./home.html">
+      <img class="logo" src="./0-Photoroom.png" alt="MyApp Logo" height="80" />
+    </a>
+    <button class="navbar-toggler ml-auto" type="button" id="toggleSidebar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item"><a class="nav-link" href="./home.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="./about.html">About</a></li>
+      <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="./pglisting.html">PG Listing</a></li>
+        <li class="nav-item"><a class="nav-link" href="./login.html">login</a></li>
+        <li class="nav-item"><a class="nav-link" href="./registerform.html"> Signup</a></li>
+       
+      </ul>
+    </div>
+  </nav>
+
+  
+  <div class="sidebar" id="sidebar">
+    <span class="close-btn" id="closeSidebar">&times;</span>
+    <ul class="nav flex-column p-3">
+      <li class="nav-item"><a class="nav-link" href="./home.html"><i class="fas fa-home"></i> Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="./about.html"><i class="fas fa-info-circle"></i> About</a></li>
+      <li class="nav-item"><a class="nav-link" href="./contact.html"><i class="fas fa-phone-alt"></i> Contact</a></li>
+      <li class="nav-item"><a class="nav-link" href="./pglisting.html"><i class="fas fa-building"></i> PG Listing</a></li>
+      <li class="nav-item"><a class="nav-link" href="./login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+      <li class="nav-item"><a class="nav-link" href="./registerform.html"><i class="fas fa-user-plus"></i> Signup</a></li>
+    </ul>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // Smooth GSAP animation for navbar
+    gsap.from(".navbar", {
+      opacity: 0,
+      y: -50,
+      duration: 1,
+      ease: "power3.out"
+    });
+
+    // Staggered animation for nav links
+    gsap.from(".navbar-nav .nav-item", {
+      opacity: 0,
+      y: 20,
+      duration: 1,
+      ease: "power3.out",
+      stagger: 0.2, // Delay between each item
+      delay: 0.5, // Wait for the navbar animation to complete
+    });
+
+    document.getElementById("toggleSidebar").addEventListener("click", () => {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.add("active");
+      document.querySelector(".content").classList.add("shifted");
+    });
+    
+    document.getElementById("closeSidebar").addEventListener("click", () => {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.remove("active");
+      document.querySelector(".content").classList.remove("shifted");
+    });
+    
+  </script>
+
+<!--  -->
+
+
+    <style>
+       body{
+            font-family: Arial, sans-serif;
+            color: #4A5568;
+            margin: 0;
+            padding: 0;
+            position: relative;
+          
+           
+        }
+
+        .unique-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            flex-direction: column;
+        }
+
+        @media (min-width: 768px) {
+            .unique-container {
+                flex-direction: row;
+            }
+        }
+
+        .unique-map-container {
+            flex: 2;
+            background-color: #E2E8F0;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            order: 2;
+        }
+
+        @media (min-width: 768px) {
+            .unique-map-container {
+                width: 172%;
+                order: 1;
+            }
+        }
+
+        .unique-map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(1) contrast(1.2) opacity(0.4);
+        }
+
+        .unique-info-box {
+            background-color: #FFF;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            right: 16px;
+        }
+
+        .unique-info-box h2 {
+            font-size: 12px;
+            font-weight: 600;
+            color: #1A202C;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .unique-info-box p {
+            font-size: 14px;
+            margin: 0 0 8px;
+        }
+
+        .unique-info-box a {
+            color: #E53E3E;
+            text-decoration: none;
+        }
+
+        .unique-feedback-form {
+            width: 100%;
+            flex: 1;
+            background-color: #FFF;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            order: 1;
+        }
+
+        @media (min-width: 768px) {
+            .navbar {
+              height: auto;
+              width: 100%;
+            }
+
+            .navbar-toggler {
+              top: 0;
+              margin-top: -3%;
+              margin-right: 5%;
+              position: relative;
+            }
+
+            .navbar-nav .nav-link {
+              font-size: 14px;
+            }
+
+            .unique-feedback-form {
+                position: relative;
+                right: 10px;
+                order: 2;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+              height: auto;
+              width: 100%;
+            }
+
+            .navbar-toggler {
+              top: 0;
+              margin-top: -33%;
+              margin-right: 5%;
+              position: relative;
+            }
+
+            .navbar-nav .nav-link {
+              font-size: 14px;
+            }
+   
+            .unique-container {
+                width: 92%;
+            }
+
+            .unique-feedback-form {
+                background-image: url('contactfrombg.png');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                width: 100%;
+                position: relative;
+                margin-top: 10%;
+                order: 2;
+            }
+
+            .unique-map-container {
+                width: 100%;
+                position: relative;
+                left: 3px;
+            }
+
+            .unique-map-container iframe {
+                width: 100%;
+                height: 609px;
+                border: 0;
+                filter: grayscale(1) contrast(1.2) opacity(0.4);
+            }
+        }
+
+        .unique-feedback-form h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            font-weight: 500;
+            color: #1A202C;
+        }
+
+        .unique-feedback-form p {
+            font-size: 14px;
+            margin-bottom: 24px;
+            color: #718096;
+        }
+
+        .unique-feedback-form label {
+            font-size: 14px;
+            color: #718096;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .unique-feedback-form input,
+        .unique-feedback-form textarea {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            color: #4A5568;
+            border: 1px solid #CBD5E0;
+            border-radius: 4px;
+            outline: none;
+            margin-bottom: 16px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .unique-feedback-form input:focus,
+        .unique-feedback-form textarea:focus {
+            border-color: #E53E3E;
+            box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.2);
+        }
+
+        .unique-feedback-form textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        .unique-feedback-form button {
+            width: 100%;
+            background-color: #E53E3E;
+            color: #FFF;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .unique-feedback-form button:hover {
+            background-color: #C53030;
+        }
+
+        .unique-feedback-form .unique-note {
+            font-size: 12px;
+            color: #A0AEC0;
+            margin-top: 8px;
+        }
+    </style>
+
+    <section class="unique-container">
+        <div class="unique-feedback-form">
+            <h2>Contact Us</h2>
+            <p style="color: #E53E3E;">Let's Connect with Shivshakti PG</p>
+            <form>
+                <label for="unique-name">Name</label>
+                <input type="text" id="unique-name" name="unique-name" placeholder="Your Name">
+                
+                <label for="unique-email">Email</label>
+                <input type="email" id="unique-email" name="unique-email" placeholder="Your Email">
+                
+                <label for="unique-message">Message</label>
+                <textarea id="unique-message" name="unique-message" placeholder="Your Message"></textarea>
+                
+                <button type="submit">Submit</button>
+            </form>
+            <p class="unique-note">Chicharrones blog helvetica normcore iceland tousled brook viral artisan.</p>
+        </div>
+        <div class="unique-map-container">
+            <iframe 
+            class="unique-pg-listings-iframe"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.8395853624!2d77.06889930924616!3d28.527582010931558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce44f5699dffd%3A0x6b11d618d2b7e7db!2sDelhi!5e0!3m2!1sen!2sin!4v1671990070812!5m2!1sen!2sin"
+            allowfullscreen=""
+            loading="lazy">
+            </iframe>
+            <div class="unique-info-box">
+                <div>
+                    <h2>Address</h2>
+                    <p>Photo booth tattooed prism, portland taiyaki hoodie neutra typewriter</p>
+                </div>
+                <div>
+                    <h2>Email</h2>
+                    <a href="mailto:example@email.com">example@email.com</a>
+                    <h2>Phone</h2>
+                    <p>123-456-7890</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+         <!-- Font Awesome CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <style>
+    @media (max-width: 468px) {
+      .bg {
+        width: 100%;
+        top: 0;
+        left: 0;
+        position: relative;
+      }
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .navbar-brand {
+        margin-bottom: 10px;
+      }
+      .navbar-nav {
+        flex-direction: column;
+        width: 100%;
+      }
+      .navbar-nav .nav-item {
+        width: 100%;
+        text-align: left;
+      }
+      .navbar-nav .nav-link {
+        padding: 10px 15px;
+      }
+      .sidebar {
+        width: 100%;
+      }
+      .content.shifted {
+        margin-left: 0;
+      }
+      .unique-container {
+        flex-direction: column;
+        padding: 16px;
+      }
+      .unique-map-container {
+        width: 100%;
+        order: 2;
+      }
+      .unique-info-box {
+        position: static;
+        margin-top: 16px;
+      }
+    }
+  </style>
+
+  <!-- Bootstrap 5 Footer -->
+  <!-- Bootstrap 5 Footer -->
+  <footer class="bg text-black py-5">
+    <div class="container">
+      <div class="row text-center text-md-start">
+
+        <!-- Logo Section -->
+        <div class="col-12 col-md-3 mb-4">
+          <img href="/" src="./0-Photoroom.png" alt="Company Logo" class="img-fluid" style="max-width: 120px;">
+        </div>
+
+        <!-- Links Section -->
+        <div class="col-12 col-md-3 mb-4">
+          <h5>Navigation</h5>
+          <ul class="list-unstyled">
+            <li><a href="/" class="text-black text-decoration-none d-block mb-2">Home</a></li>
+            <li><a href="./about.html" class="text-black text-decoration-none d-block mb-2">About Us</a></li>
+            <li><a href="./pglisting .html"" class=" text-black text-decoration-none d-block
+                mb-2">Listings</a></li>
+            <li><a href="/contact" class="text-black text-decoration-none d-block mb-2">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Information Section -->
+        <div class="col-12 col-md-3 mb-4">
+          <h5>Contact Information</h5>
+          <p>Email: contact@yourcompany.com</p>
+          <p>Phone: +123 456 7890</p>
+        </div>
+
+        <!-- Social Media Links Section -->
+        <div class="col-12 col-md-3 mb-4">
+          <h5>Follow Us</h5>
+          <a href="#" class="text-black me-3"><i class="fab fa-facebook fa-lg"></i></a>
+          <a href="#" class="text-black me-3"><i class="fab fa-twitter fa-lg"></i></a>
+          <a href="#" class="text-black me-3"><i class="fab fa-instagram fa-lg"></i></a>
+          <a href="#" class="text-black"><i class="fab fa-linkedin fa-lg"></i></a>
+        </div>
+      </div>
+
+      <!-- Copyright and Disclaimer -->
+      <div class="text-center mt-4">
+        <p class="mb-0 text-muted">Copyright © 2024 | All Rights Reserved | <a href="#"
+            class="text-decoration-none">Sitemap</a></p>
+        <p class="mb-0 text-muted">Images shown are for representational purposes only. Amenities depicted may or may
+          not form a part of that individual property.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 and Font Awesome CDN -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <!-- Bootstrap 5 and Font Awesome CDN -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  
+</body>
+</html>

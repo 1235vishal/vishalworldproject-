@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PG Listings Map Section</title>
+ 
+</head>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+
+  
+ body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrollbars */
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Example scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px; /* Adjust width */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; /* Scrollbar color */
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+</style>
+<body>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+  <style>
+    
+
+    
+
+
+    .flex-column {
+      gap: 13px;
+      flex-direction: column !important;
+  }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -100%; /* Start completely hidden */
+      width: 50%;
+      height: 100%;
+      color: white;
+      background-color: #FFFFFF;
+      overflow-y: auto;
+      transition: all 0.3s ease;
+      z-index: 1050;
+    }
+
+    .p-3 {
+      font-size: 46px;
+      padding: 1rem !important;
+  }
+
+  @media (min-width: 992px) {
+    .navbar-expand-lg .navbar-collapse {
+        right: 36px;
+        position: relative;
+        display: flex !important
+;
+        flex-basis: auto;
+    }
+}
+    
+    .sidebar.active {
+      left: 0; /* Fully visible when active */
+    }
+    
+    .content.shifted {
+      margin-left: 250px; /* Adjust margin if needed for shifted content */
+    }
+    
+
+    .sidebar .nav-link {
+      color: rgb(0, 0, 0);
+    }
+
+    .content {
+      margin-left: 0;
+      transition: margin-left 0.3s ease;
+    }
+
+    @media (min-width: 992px) {
+      .navbar-expand-lg .navbar-nav {
+          gap: 32px;
+          flex-direction: row;
+      }
+  }
+
+    .content.shifted {
+      margin-left: 250px;
+    }
+
+    .navbar-toggler-icon {
+      cursor: pointer;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: -20px;
+      right: 10px;
+      font-size: 114px;
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+    }
+    .content.shifted {
+      margin-left: 100%; /* Match the sidebar width */
+    }
+    
+
+    @media (max-width: 768px) {
+      .logo {
+        height: 119px;
+        width: 136px;
+        position: relative;
+        right: 7px;
+        bottom: 26px;
+      }
+
+      .navbar {
+        height: 69px;
+        width: 100%;
+      }
+
+      .navbar-toggler {
+        top: -18px;
+        position: relative;
+      }
+    }
+    .navbar-nav .nav-link {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      color: #000000f9; /* Dark black color for normal state */
+      font-weight: bold; /* Bold text */
+      transition: color 0.3s ease;
+    }
+    
+    .navbar-nav .nav-link:hover {
+      color: #C61300; /* Hover color */
+    }
+    
+    .navbar-nav .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px; /* Thickness of the underline */
+      background: #C61300; /* Underline color */
+      left: 0;
+      bottom: -5px; /* Space between text and underline */
+      transition: width 0.3s ease;
+    }
+    .sidebar{
+      width: 80%;
+    }
+    
+    .navbar-nav .nav-link:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .logo {
+        height: 119px;
+        width: 136px;
+        position: relative;
+        right: 7px;
+        bottom: 26px;
+      }
+
+      .navbar {
+        height: 69px;
+        width: 100%;
+      }
+
+      .navbar-toggler {
+        top: -18px;
+        position: relative;
+      }
+    }
+    .navbar-nav .nav-link {
+      position: relative;
+      display: inline-block;
+      text-decoration: none;
+      color: #000000f9; /* Dark black color for normal state */
+      font-weight: bold; /* Bold text */
+      transition: color 0.3s ease;
+    }
+    
+    .navbar-nav .nav-link:hover {
+      color: #C61300; /* Hover color */
+    }
+    
+    .navbar-nav .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px; /* Thickness of the underline */
+      background: #C61300; /* Underline color */
+      left: 0;
+      bottom: -5px; /* Space between text and underline */
+      transition: width 0.3s ease;
+    }
+    
+    .navbar-nav .nav-link:hover::after {
+      width: 100%;
+    }
+    
+  </style>
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="./home.html">
+      <img class="logo" src="./0-Photoroom.png" alt="MyApp Logo" height="80" />
+    </a>
+    <button class="navbar-toggler ml-auto" type="button" id="toggleSidebar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item"><a class="nav-link" href="./home.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="./about.html">About</a></li>
+      <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="./pglisting.html">PG Listing</a></li>
+        <li class="nav-item"><a class="nav-link" href="./login.html">login</a></li>
+        <li class="nav-item"><a class="nav-link" href="./registerform.html"> Signup</a></li>
+       
+      </ul>
+    </div>
+  </nav>
+
+  
+  <div class="sidebar" id="sidebar">
+    <span class="close-btn" id="closeSidebar">&times;</span>
+    <ul class="nav flex-column p-3">
+      <li class="nav-item"><a class="nav-link" href="./home.html"><i class="fas fa-home"></i> Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="./about.html"><i class="fas fa-info-circle"></i> About</a></li>
+      <li class="nav-item"><a class="nav-link" href="./contact.html"><i class="fas fa-phone-alt"></i> Contact</a></li>
+      <li class="nav-item"><a class="nav-link" href="./pglisting.html"><i class="fas fa-building"></i> PG Listing</a></li>
+      <li class="nav-item"><a class="nav-link" href="./login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+      <li class="nav-item"><a class="nav-link" href="./registerform.html"><i class="fas fa-user-plus"></i> Signup</a></li>
+    </ul>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // Smooth GSAP animation for navbar
+    gsap.from(".navbar", {
+      opacity: 0,
+      y: -50,
+      duration: 1,
+      ease: "power3.out"
+    });
+
+    // Staggered animation for nav links
+    gsap.from(".navbar-nav .nav-item", {
+      opacity: 0,
+      y: 20,
+      duration: 1,
+      ease: "power3.out",
+      stagger: 0.2, // Delay between each item
+      delay: 0.5, // Wait for the navbar animation to complete
+    });
+
+    document.getElementById("toggleSidebar").addEventListener("click", () => {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.add("active");
+      document.querySelector(".content").classList.add("shifted");
+    });
+    
+    document.getElementById("closeSidebar").addEventListener("click", () => {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.remove("active");
+      document.querySelector(".content").classList.remove("shifted");
+    });
+    
+  </script>
+
+
+  <style>
+    /* General Reset */
+    .firstsetabout {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      opacity: 0; /* Initially hidden for animation */
+    }
+
+  .heading-primary {
+    right: 137px;
+    position: relative;
+  }
+  
+  .heading-secondary {
+    right: 192px;
+    position: relative;
+  }
+    .content {
+      width: 100%;
+      padding: 16px;
+      text-align: center;
+    }
+  
+    .heading-primary {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: black;
+      margin-bottom: 10px;
+    }
+  
+    .heading-secondary {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: hsl(0, 72.2%, 50.6%);
+      margin-bottom: 20px;
+    }
+  
+    .paragraph {
+      font-size: 1rem;
+      color: hsl(0, 0%, 45.1%);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+  
+    .image-container {
+      width: 100%;
+      padding: 16px;
+      text-align: center;
+    }
+  
+    .image-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  
+    
+    /* Media Query for Small Screens */
+    @media (max-width: 768px) {
+      .firstsetabout {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+      }
+  
+      .paragraph {
+        top:323px;
+        position: relative;
+      }
+  
+      .content {
+        order: 1; /* Ensure content appears before image */
+      }
+  
+      .image-container {
+        bottom: 221px;
+        position: relative;
+        order: 2; /* Place image after content */
+        width: 150%;
+      }
+  
+      .heading-primary {
+        font-size: 2rem;
+      }
+  
+      .heading-secondary {
+        font-size: 1.5rem;
+      }
+  
+      .image-container img {
+        top: 36px;
+        position: relative;
+        top: 68px;
+        max-width: 60%;
+        margin-top: 20px;
+      }
+    }
+  
+    /* Media Query for Larger Screens */
+    @media (min-width: 769px) {
+      .firstsetabout {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+  
+      .content {
+        left: 86px;
+        position: relative;
+        width: 50%;
+        text-align: left;
+      }
+  
+      .image-container {
+        top: 75px;
+        right: 63px;
+        position: relative;
+        width: 35%;
+      }
+  
+      .image-container img {
+        top: -60px;
+        position: relative;
+        width: 100%;
+      }
+    }
+
+
+    @media (max-width: 480px) {
+      .firstsetabout {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10%;
+      }
+
+      
+      .image-container img {
+        top: -20px;
+        position: relative;
+        max-width: 56%;
+      }
+
+      .heading-primary {
+        right: -11px;
+        position: relative;
+      }
+      
+      .heading-secondary {
+        right: -2px;
+        position: relative;
+      }
+
+      .paragraph{
+        top:223px;
+        position: relative;
+      }
+      }
+
+  </style>
+  
+  <div class="firstsetabout">
+    <div class="content">
+      <h1 class="heading-primary">We didn't find it for us,</h1>
+      <h2 class="heading-secondary">so we created it for you</h2>
+      <p class="paragraph">
+        That's essentially our story in one sentence. Crammed up hostels or cooped up PGs - not much of a choice, is it? 
+        That's why we created Stanza Living - a place designed by people who've been in your shoes. 
+        Understand you. And are inspired by you.
+      </p>
+    </div>
+    <div class="image-container">
+      <img src="https://www.stanzaliving.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fstanza-living%2Fimage%2Fupload%2Fw_800%2Fv1653991914%2FWebsite%2520v5%2FAbout_Us%2Fabout-us-image1.jpg&amp;w=3840&amp;q=75" alt="Room Design" />
+    </div>
+  </div>
+  
+  <script>
+    // Initialize GSAP animations
+    gsap.registerPlugin(ScrollTrigger);
+  
+    // Fade-in animation for firstsetabout
+    gsap.fromTo(
+      ".firstsetabout",
+      { opacity: 0, y: 50 }, // Start: hidden and shifted down
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: ".firstsetabout",
+          start: "top 80%", // Animation starts when firstsetabout enters the viewport
+          toggleActions: "play none none none", // Play once when triggered
+        },
+      }
+    );
+  
+    // Heading animation
+    gsap.from(".heading-primary", {
+      x: -100, // Slide in from left
+      opacity: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".heading-primary",
+        start: "top 90%",
+      },
+    });
+  
+    gsap.from(".heading-secondary", {
+      x: 100, // Slide in from right
+      opacity: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".heading-secondary",
+        start: "top 90%",
+      },
+    });
+  
+    // Image animation
+    gsap.from(".image-container img", {
+      scale: 0.8, // Zoom in effect
+      opacity: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".image-container",
+        start: "top 80%",
+      },
+    });
+  </script>
+  
+
+
+<!--  -->
+   <style>
+    /* Base Styles for PG Listings Map Section */
+  
+
+    .pg-listings-container {
+      display: flex;
+      flex-direction: row; /* Default: side-by-side */
+      height: 100vh;
+    }
+
+    .pg-listings-grid-section {
+      width: 50%;
+      background-color: #f9f9f9;
+      padding: 20px;
+      overflow-y: auto; /* Enable scrolling for smaller content */
+    }
+
+    .pg-listings-map-section {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pg-listings-heading {
+      font-size: 2rem;
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .pg-listings-highlight {
+      color: #e63946;
+    }
+
+    .pg-listings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Three images per row */
+      gap: 15px;
+    }
+
+    .pg-listings-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      aspect-ratio: 1; /* Maintain square aspect ratio */
+    }
+
+    .pg-listings-card img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .pg-listings-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .pg-listings-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .pg-listings-iframe {
+      width: 90%;
+      height: 90%;
+      border: 0;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .navbar {
+        height: auto;
+        width: 100%;
+        margin-bottom: -10%;
+      }
+
+      .navbar-nav .nav-link {
+        font-size: 14px;
+      }
+      .pg-listings-container {
+        bottom: 30px;
+        position: relative;
+        width: 100%;
+        flex-direction: column;
+        height: auto;
+      }
+
+      .pg-listings-grid-section, .pg-listings-map-section {
+        width: 100%; /* Take full width */
+      }
+
+      .pg-listings-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two images per row for smaller screens */
+      }
+
+      .pg-listings-heading {
+        font-size: 1.5rem; /* Smaller heading size for mobile */
+        margin-bottom: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        height: auto;
+        width: 100%;
+        margin-bottom: -10%;
+      }
+
+      .navbar-nav .nav-link {
+        font-size: 14px;
+      }
+      .pg-listings-grid {
+        /* left: 102px; */
+        position: relative;
+        width: 100%;
+      }
+      .pg-listings-container {
+       bottom: 30px;
+        position: relative;
+        width: 100%;
+        flex-direction: column;
+        height: auto;
+        top: -60px;
+      }
+
+      .pg-listings-heading {
+        font-size: 1.25rem; /* Even smaller heading size */
+      }
+
+      .pg-listings-iframe {
+        width: 100%; /* Map takes full width */
+        height: 300px; /* Fixed height for map */
+      }
+      .pg-listings-map-section {
+        top: 58px;
+        width: 91%;
+        height: 308px;
+        position: relative;
+        left: 24px;
+      }
+      .pg-listings-iframe {
+        top: 105px;
+        position: relative;
+        height: 172%;
+      }
+    }
+  </style>
+
+  <div class="pg-listings-container">
+    <!-- Grid Section (Left Side) -->
+    <div class="pg-listings-grid-section">
+      <h1 class="pg-listings-heading">Explore our <span class="pg-listings-highlight">Handpicked Collections</span> of PG Homes</h1>
+      <div class="pg-listings-grid">
+        <div class="pg-listings-card">
+          <img src="./pglistingpageimage1.png" alt="Budget Friendly">
+          <div class="pg-listings-overlay">Budget Friendly</div>
+        </div>
+        <div class="pg-listings-card">
+          <img src="./pglistingpageimage2.jpeg" alt="WiFi Included">
+          <div class="pg-listings-overlay">WiFi Included</div>
+        </div>
+        <div class="pg-listings-card">
+          <img src="./pglistingpageimage3.png" alt="Meals Included">
+          <div class="pg-listings-overlay">Meals Included</div>
+        </div>
+        <div class="pg-listings-card">
+          <img src="./pglistingpageimage4.png" alt="For Students">
+          <div class="pg-listings-overlay">For Students</div>
+        </div>
+        <div class="pg-listings-card">
+          <img src="./pglistingpageimage5.png" alt="Single Rooms">
+          <div class="pg-listings-overlay">Single Rooms</div>
+        </div>
+        <div class="pg-listings-card">
+          <img src="./pglistingpageimage6.png" alt="For Professionals">
+          <div class="pg-listings-overlay">For Professionals</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map Section (Right Side) -->
+    <div class="pg-listings-map-section">
+      <iframe 
+        class="pg-listings-iframe"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509419!2d144.9537353153186!3d-37.81627997975148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43fdf2fd49%3A0x5045675218ce6e0!2z44CSMzAwMCBBdXN0cmFsaWEgUm9hZCwgTWVsYm91cm5lIFZJQyAzMDAwLCDjg5fjgqPjg6Djg7Pjg4njg6Hjg7Pjgqzjg7zjg7fjg7Pjg6Pjg7zjg5fjg7Pjg7zjg6Xjg7Tjg7zjg5_jg6Q!5e0!3m2!1sen!2sus!4v1671990070812!5m2!1sen!2sus" 
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+
+
+  <!--  -->
+    <!-- Include GSAP and ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+    <style>
+      .rooms {
+        font-family: Arial, sans-serif;
+      }
+  
+      .container14 {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px;
+        opacity: 0;
+        transform: translateY(50px);
+      }
+  
+      h1 {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 16px;
+        color: #333;
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+  
+      h2 {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 24px;
+      }
+  
+      .house-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 16px;
+      }
+  
+      .house-card {
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+        padding: 16px;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(50px);
+      }
+  
+      .house-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 12px;
+      }
+  
+      .house-card h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+      }
+  
+      .house-card p {
+        font-size: 14px;
+        color: #666;
+        margin: 4px 0;
+      }
+  
+      .house-card button {
+        width: 149px;
+        background-color: #C61300;
+        color: #fff;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 12px;
+      }
+  
+      .house-card button:hover {
+        background-color: #e75241;
+      }
+  
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 24px;
+        }
+  
+        .rooms {
+          width: 100%;
+          left: 52px;
+          top: 271px;
+          position: relative;
+        }
+  
+        h2 {
+          font-size: 20px;
+        }
+      }
+  
+      @media (max-width: 480px) {
+
+        h1 {
+          font-size: 24px;
+        }
+  
+        h2 {
+          font-size: 20px;
+        }
+      }
+      @media (max-width: 480px) {
+        .house-card {
+            height: 646px;
+            padding: 12px;
+        }
+        .container14{
+          position: relative;
+          width: 100%;
+          left: -40px;
+        }
+        .zone-filter{
+          left: 20px;
+        }
+    }
+    </style>
+  
+    
+    <section class="rooms">
+      <div class="container14">
+        <h1>Welcome to SHIVSHAKTI PG BOOKING –<br><span style="color: #C61300;">Your Gateway to Quality and Comfort in PG Living</span></h1>
+        <div class="zone-filter">
+          <h2>Filter by Zone</h2>
+          <div class="filter-row">
+            <select id="zone-select" name="zone">
+              <option value="">All Zones</option>
+              <option value="west-delhi">West Delhi</option>
+              <option value="north-delhi">North Delhi</option>
+              <option value="south-delhi">South Delhi</option>
+              <option value="east-delhi">East Delhi</option>
+            </select>
+            <button id="apply-filter">Apply Filter</button>
+          </div>
+        </div>
+        
+        <style>
+          .zone-filter {
+            width: 300px;
+            padding: 16px;
+         
+            border-radius: 8px;
+            position: relative;
+            bottom: 96px;
+            right: 166px;
+          }
+        
+          .zone-filter h2 {
+            margin-bottom: 16px;
+          }
+        
+          .filter-row {
+            display: flex;
+            gap: 16px;
+            justify-content: space-between;
+          }
+        
+          .zone-filter select,
+          .zone-filter button {
+            width: 48%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+          }
+        
+          .zone-filter button {
+            cursor: pointer;
+          }
+
+         
+      @media (max-width: 768px) {
+            .zone-filter{
+              width: 300px;
+              padding: 16px;
+              border-radius: 8px;
+              position: relative;
+              bottom: 21px;
+              left: 269px;
+            }
+          }
+
+      @media (max-width: 480px) {
+        .zone-filter {
+          position: relative;
+          bottom: 25px;
+          left: 20px;
+        }
+        
+      }
+        </style>
+        
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            // Zone filter functionality
+            document.getElementById("apply-filter").addEventListener("click", () => {
+              const selectedZone = document.getElementById("zone-select").value;
+              const cards = document.querySelectorAll(".house-card");
+        
+              cards.forEach((card) => {
+                const zone = card.querySelector("p:nth-child(4)").textContent.split(":")[1].trim();
+                if (zone.toLowerCase() === selectedZone.toLowerCase() || selectedZone === "") {
+                  card.style.display = "block";
+                } else {
+                  card.style.display = "none";
+                }
+              });
+            });
+          });
+        </script>
+        
+        <div class="house-grid">
+          <div class="house-card">
+            <img src="./room1.png" alt="Roselands House">
+            <h3>Royal Heights PG</h3>
+            <p>Type: Girls</p>
+            <p>Address: 32, Connaught Place, New Delhi, Delhi 110001</p>
+            <p>Zone: West Delhi</p>
+            <p>Rent Start: ₹18000.00</p>
+            <button>View detals</button>
+          </div>
+          <div class="house-card">
+            <img src="./room2.png" alt="Woodlandside">
+            <h3>Royal Heights PG</h3>
+            <p>Type: Girls</p>
+            <p>Address: 32, Connaught Place, New Delhi, Delhi 110001</p>
+            <p>Zone: West Delhi</p>
+            <p>Rent Start: ₹18000.00</p>
+            <button>View detals</button>
+          </div>
+          <div class="house-card">
+            <img src="./room3.png" alt="The Old Lighthouse">
+            <h3>Royal Heights PG</h3>
+            <p>Type: Girls</p>
+            <p>Address: 32, Connaught Place, New Delhi, Delhi 110001</p>
+            <p>Zone: West Delhi</p>
+            <p>Rent Start: ₹18000.00</p>
+            <button>View detals</button>
+          </div>
+  
+        </div>
+      </div>
+    </section>
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        gsap.registerPlugin(ScrollTrigger);
+  
+        // Animate the container
+        gsap.to(".container14", {
+          opacity: 1,
+          y: 0,
+          ease: "power3.out",
+          duration: 2,
+          scrollTrigger: {
+            trigger: ".container14",
+            start: "top bottom",
+            end: "top center",
+            scrub: true,
+          },
+        });
+  
+        // Animate the headline
+        gsap.to("h1", {
+          opacity: 1,
+          y: 0,
+          ease: "power3.out",
+          duration: 2,
+          scrollTrigger: {
+            trigger: "h1",
+            start: "top bottom",
+            end: "top center",
+            scrub: true,
+          },
+        });
+  
+        // Animate each card in the grid
+        gsap.utils.toArray(".house-card").forEach((card, index) => {
+          gsap.to(card, {
+            opacity: 1,
+            y: 0,
+            ease: "power3.out",
+            duration: 1.5,
+            delay: index * 0.2,
+            scrollTrigger: {
+              trigger: card,
+              start: "top bottom",
+              end: "top center",
+              scrub: true,
+            },
+          });
+        });
+      });
+    </script>
+
+
+
+
+      <!-- Font Awesome CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <style>
+
+    @media (max-width: 480px) {
+
+      .bg {
+        width: 100%;
+               top: 266px;
+        left: 0px;
+        position: relative;
+      }
+      
+    }
+  </style>
+
+  <!-- Bootstrap 5 Footer -->
+  <!-- Bootstrap 5 Footer -->
+  <footer class="bg text-black py-5">
+    <div class="container">
+      <div class="row text-center text-md-start">
+
+        <!-- Logo Section -->
+        <div class="col-12 col-md-3 mb-4">
+          <img href="/" src="./0-Photoroom.png" alt="Company Logo" class="img-fluid" style="max-width: 120px;">
+        </div>
+
+        <!-- Links Section -->
+        <div class="col-12 col-md-3 mb-4">
+          <h5>Navigation</h5>
+          <ul class="list-unstyled">
+            <li><a href="/" class="text-black text-decoration-none d-block mb-2">Home</a></li>
+            <li><a href="./about.html" class="text-black text-decoration-none d-block mb-2">About Us</a></li>
+            <li><a href="./pglisting .html"" class=" text-black text-decoration-none d-block
+                mb-2">Listings</a></li>
+            <li><a href="/contact" class="text-black text-decoration-none d-block mb-2">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Information Section -->
+        <div class="col-12 col-md-3 mb-4">
+          <h5>Contact Information</h5>
+          <p>Email: contact@yourcompany.com</p>
+          <p>Phone: +123 456 7890</p>
+        </div>
+
+        <!-- Social Media Links Section -->
+        <div class="col-12 col-md-3 mb-4">
+          <h5>Follow Us</h5>
+          <a href="#" class="text-black me-3"><i class="fab fa-facebook fa-lg"></i></a>
+          <a href="#" class="text-black me-3"><i class="fab fa-twitter fa-lg"></i></a>
+          <a href="#" class="text-black me-3"><i class="fab fa-instagram fa-lg"></i></a>
+          <a href="#" class="text-black"><i class="fab fa-linkedin fa-lg"></i></a>
+        </div>
+      </div>
+
+      <!-- Copyright and Disclaimer -->
+      <div class="text-center mt-4">
+        <p class="mb-0 text-muted">Copyright © 2024 | All Rights Reserved | <a href="#"
+            class="text-decoration-none">Sitemap</a></p>
+        <p class="mb-0 text-muted">Images shown are for representational purposes only. Amenities depicted may or may
+          not form a part of that individual property.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap 5 and Font Awesome CDN -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <!-- Bootstrap 5 and Font Awesome CDN -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  
+  
+</body>
+</html>
