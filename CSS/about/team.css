@@ -1,0 +1,93 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container Styling */
+.team-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  text-align: center;
+  padding: 20px;
+  color: #333;
+}
+
+/* Heading Styles */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+h1 span {
+  color: #d32f2f;
+}
+
+p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Team Grid */
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+/* Team Member Cards */
+.team-member-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Hover Effect */
+.team-member-card:hover {
+  background: #ffe5e5; /* Light red hover effect */
+  transform: translateY(-5px); /* Slight lift effect */
+}
+
+.team-member-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.team-member-card h3 {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.team-member-card p {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr); /* Two-column layout for tablets */
+  }
+}
+
+@media (min-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(4, 1fr); /* Four-column layout for desktops */
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+}

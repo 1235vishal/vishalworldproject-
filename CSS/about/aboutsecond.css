@@ -1,0 +1,128 @@
+
+    /* Prevent horizontal scrolling */
+    html, body {
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Section Styling */
+    .firstsetabout, .secondsetabout {
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px; /* Reduced gap */
+      opacity: 0;
+    }
+
+    /* Reduce gap between sections on all screens */
+    .secondsetabout {
+      margin-top: -10px; /* Brings the sections closer */
+    }
+
+    /* Content Styling */
+    .content {
+      flex: 1 1 50%;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .heading-primary {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 8px;
+    }
+
+    .heading-secondary {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #e63946;
+      margin-bottom: 12px;
+    }
+
+    .paragraph {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    /* Image Styling */
+    .image-container {
+      flex: 1 1 40%;
+      text-align: center;
+    }
+
+    .image-container img {
+      width: 100%;
+      max-width: 450px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .firstsetabout, .secondsetabout {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 15px; /* Reduced padding */
+      }
+
+      /* Move image below text for small screens */
+      .firstsetabout .image-container, 
+      .secondsetabout .image-container {
+        order: 2;
+      }
+
+      .firstsetabout .content, 
+      .secondsetabout .content {
+        order: 1;
+      }
+
+      .heading-primary {
+        font-size: 2rem;
+      }
+
+      .heading-secondary {
+        font-size: 1.4rem;
+      }
+
+      .image-container img {
+        max-width: 80%;
+      }
+    }
+
+    @media (min-width: 769px) {
+      /* Ensure normal position on larger screens */
+      .firstsetabout {
+        flex-direction: row;
+      }
+
+      .secondsetabout {
+        flex-direction: row-reverse;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .heading-primary {
+        font-size: 1.8rem;
+      }
+
+      .heading-secondary {
+        font-size: 1.2rem;
+      }
+
+      .paragraph {
+        font-size: 0.9rem;
+      }
+
+      .image-container img {
+        max-width: 90%;
+      }
+    }

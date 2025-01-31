@@ -1,0 +1,183 @@
+body {
+  font-family: Arial, sans-serif;
+  color: #4A5568;
+  margin: 0;
+  padding: 0;
+  background-color: #FFFFFF;
+}
+
+.unique-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.unique-register-form {
+  width: 100%;
+  max-width: 450px;
+  background-color: #FFF;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.unique-register-form h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  font-weight: 500;
+  color: #1A202C;
+}
+
+.unique-register-form label {
+  font-size: 14px;
+  color: #718096;
+  display: block;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.unique-register-form input {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  color: #4A5568;
+  border: 1px solid #CBD5E0;
+  border-radius: 4px;
+  outline: none;
+  margin-bottom: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.unique-register-form input:focus {
+  border-color: #E53E3E;
+  box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.2);
+}
+
+.unique-register-form button {
+  width: 100%;
+  background-color: #E53E3E;
+  color: #FFF;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.unique-register-form button:hover {
+  background-color: #C53030;
+}
+
+.unique-register-form .unique-login-link {
+  font-size: 14px;
+  color: #E53E3E;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.unique-register-form .unique-login-link a {
+  text-decoration: none;
+  color: #E53E3E;
+}
+
+.unique-image-container {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.unique-image-container img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  border-radius: 11px;
+}
+
+.row-input {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.row-input .input-box {
+  width: 48%;
+}
+
+/* Gender Radio Buttons */
+.gender-section {
+  margin-top: 16px;
+  text-align: left;
+}
+
+.gender-category {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.gender-category input[type="radio"] {
+  display: none;
+}
+
+.gender-category label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.gender-category label span.dot {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  margin-right: 8px;
+  background-color: #d9d9d9;
+}
+
+.gender-category input:checked + label span.dot {
+  background-color: #E53E3E;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .unique-container {
+    flex-direction: column;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .unique-image-container {
+    max-width: 100%;
+  }
+
+  .unique-register-form {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .row-input .input-box {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .unique-container {
+    padding: 12px;
+  }
+
+  .unique-register-form {
+    padding: 16px;
+  }
+
+  .unique-image-container img {
+    height: 250px;
+  }
+}

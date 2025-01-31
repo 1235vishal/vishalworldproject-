@@ -1,0 +1,127 @@
+
+/* Global Typography */
+.pg-rooms {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  padding: 20px;
+}
+
+.pg-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Attractive Heading */
+.pg-heading {
+    font-family: 'Playfair Display', serif; /* Use Playfair Display for a stylish title */
+
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #C61300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pg-heading span {
+  color: #333;
+  font-weight: 600;
+}
+
+/* House Grid */
+.pg-house-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Room Card Styling */
+.pg-house-card {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pg-house-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.pg-house-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.pg-house-card p {
+  font-size: 14px;
+  color: #666;
+  margin: 4px 0;
+}
+
+/* Button Styling */
+.pg-house-card button {
+  width: 160px;
+  background-color: #C61300;
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover Effects */
+.pg-house-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.pg-house-card button:hover {
+  background-color: #e75241;
+  transform: scale(1.05);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    
+    .pg-rooms {
+        font-family: 'Poppins', sans-serif;
+        color: #333;
+        padding: 20px;
+        margin-top: 79px;
+      }
+
+
+  .pg-heading {
+    font-size: 26px;
+  }
+
+  .pg-house-card {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pg-heading {
+    font-size: 22px;
+  }
+
+  .pg-house-grid {
+    grid-template-columns: 1fr;
+  }
+}

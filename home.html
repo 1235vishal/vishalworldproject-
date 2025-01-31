@@ -3,255 +3,61 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
   <link rel="stylesheet" href="styles.css?v=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  
+  <!-- Correct FontAwesome Link -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./CSS/HomeStyle/nav.css">
+  <link rel="stylesheet" href="./CSS/HomeStyle/hero.css"> <!-- Add Hero page styles -->
+  <link rel="stylesheet" href="./CSS/HomeStyle/scroll.css">
+  <link rel="stylesheet" href="./CSS/HomeStyle/Dream.css">
+  <link rel="stylesheet" href="./CSS/HomeStyle/Room.css">
+  <link rel="stylesheet" href="./CSS/HomeStyle/Service.css">
+  <link rel="stylesheet" href="./CSS/HomeStyle/lillustration.css">
+  <link rel="stylesheet" href="./CSS/HomeStyle/Footer.css">
+
+
+
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+  <!-- GSAP and ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
-  <style>
-    
-    *{
-      margin: 0;
-      padding: 0;
-    }
-
-    
-       body {
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden; /* Prevent horizontal scrollbars */
-        width: 100vw;
-        height: 100vh;
-      }
-      
-      /*  body {
-      overflow-x: clip;
-      font-family: Arial, sans-serif;
-    }
- */
-   
-    .flex-column {
-      gap: 13px;
-      flex-direction: column !important;
-  }
-
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -100%; /* Start completely hidden */
-      width: 50%;
-      height: 100%;
-      color: white;
-      background-color: #FFFFFF;
-      overflow-y: auto;
-      transition: transform 0.3s ease, left 0.3s ease; 
-      z-index: 1050;
-    }
-
-    .p-3 {
-      font-size: 46px;
-      padding: 1rem !important;
-  }
-
-  @media (min-width: 992px) {
-    .navbar-expand-lg .navbar-collapse {
-        right: 36px;
-        position: relative;
-        display: flex !important
-;
-        flex-basis: auto;
-    }
-}
-    
-    .sidebar.active {
-      left: 0; /* Fully visible when active */
-      transform: scale(1); /* Ensures it resets to normal size */
-
-    }
-    
-    .content.shifted {
-      margin-left: 250px; /* Adjust margin if needed for shifted content */
-    }
-    
-
-    .sidebar .nav-link {
-      color: rgb(0, 0, 0);
-    }
-
-    .content {
-      margin-left: 0;
-      transition: margin-left 0.3s ease;
-    }
-
-    @media (min-width: 992px) {
-      .navbar-expand-lg .navbar-nav {
-          gap: 32px;
-          flex-direction: row;
-      }
-  }
-
-    .content.shifted {
-      margin-left: 250px;
-    }
-
-    .navbar-toggler-icon {
-      cursor: pointer;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: -59px;
-      right: 10px;
-      font-size: 109px;
-      color: rgb(0, 0, 0);
-      cursor: pointer;
-    }
-    .content.shifted {
-      margin-left: 100%; /* Match the sidebar width */
-    }
-    
-
-    @media (max-width: 768px) {
-      .logo {
-        height: 119px;
-        width: 136px;
-        position: relative;
-        right: 7px;
-        bottom: 26px;
-      }
-
-      .navbar {
-        height: 69px;
-        width: 100%;
-      }
-
-      .navbar-toggler {
-        top: -18px;
-        position: relative;
-      }
-    }
-    .navbar-nav .nav-link {
-      position: relative;
-      display: inline-block;
-      text-decoration: none;
-      color: #000000f9; /* Dark black color for normal state */
-      font-weight: bold; /* Bold text */
-      transition: color 0.3s ease;
-    }
-    
-    .navbar-nav .nav-link:hover {
-      color: #C61300; /* Hover color */
-    }
-    
-    .navbar-nav .nav-link::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px; /* Thickness of the underline */
-      background: #C61300; /* Underline color */
-      left: 0;
-      bottom: -5px; /* Space between text and underline */
-      transition: width 0.3s ease;
-    }
-    
-    .navbar-nav .nav-link:hover::after {
-      width: 100%;
-    }
-
-    @media (max-width: 468px) {
-      .logo {
-        height: 60px; /* Further adjusted height */
-        width: 70px; /* Further adjusted width */
-        position: relative;
-        right: 3px; /* Fine-tuned position */
-        bottom: 15px; /* Fine-tuned position */
-      }
-
-      .navbar {
-        height: 50px; /* Further adjusted height */
-        width: 90%;
-        display: flex;
-        justify-content: space-between; /* Space between elements */
-        align-items: center; /* Center elements vertically */
-      }
-
-      .navbar-toggler {
-        top: -12px; /* Fine-tuned position */
-        position: relative;
-      }
-
-      .navbar-nav {
-        display: flex; /* Use flexbox for the navigation */
-        flex-direction: column; /* Stack items vertically */
-      }
-
-      .navbar-nav .nav-link {
-        padding: 8px 12px; /* Further adjusted padding for touch-friendly links */
-        font-size: 0.9em; /* Adjusted font size */
-      }
-    }
-
-    .navbar-nav .nav-link {
-      position: relative;
-      display: inline-block;
-      text-decoration: none;
-      color: #000000f9; /* Dark black color */
-      font-weight: bold; /* Bold text */
-      transition: color 0.3s ease;
-    }
-
-    .navbar-nav .nav-link:hover {
-      color: #C61300; /* Hover color */
-    }
-
-    .navbar-nav .nav-link::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px; /* Thickness of the underline */
-      background: #C61300; /* Underline color */
-      left: 0;
-      bottom: -5px; /* Space between text and underline */
-      transition: width 0.3s ease;
-    }
-
-    .navbar-nav .nav-link:hover::after {
-      width: 100%;
-    }
-
-    
-  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="./home.html">
-      <img class="logo" src="./0-Photoroom.png" alt="MyApp Logo" height="80" />
+      <img class="logo" src="./0-Photoroom.png" alt="Logo">
     </a>
-    <button class="navbar-toggler ml-auto" type="button" id="toggleSidebar">
+    <button class="navbar-toggler" id="toggleSidebar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        
+      <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="./home.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="./about.html">About</a></li>
-      <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
         <li class="nav-item"><a class="nav-link" href="./pglisting.html">PG Listing</a></li>
-        <li class="nav-item"><a class="nav-link" href="./login.html">login</a></li>
-        <li class="nav-item"><a class="nav-link" href="./registerform.html"> Signup</a></li>
-       
+        <li class="nav-item"><a class="nav-link" href="./login.html">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="./registerform.html">Signup</a></li>
       </ul>
     </div>
   </nav>
 
-
+  <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
     <span class="close-btn" id="closeSidebar">&times;</span>
-    <ul class="nav flex-column p-3">
+    <ul class="nav flex-column">
       <li class="nav-item"><a class="nav-link" href="./home.html"><i class="fas fa-home"></i> Home</a></li>
       <li class="nav-item"><a class="nav-link" href="./about.html"><i class="fas fa-info-circle"></i> About</a></li>
       <li class="nav-item"><a class="nav-link" href="./contact.html"><i class="fas fa-phone-alt"></i> Contact</a></li>
@@ -261,764 +67,55 @@
     </ul>
   </div>
 
-
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-  <script>
-    // Smooth GSAP animation for navbar
-    gsap.from(".navbar", {
-      opacity: 0,
-      y: -50,
-      duration: 1,
-      ease: "power3.out"
-    });
-
-    // Staggered animation for nav links
-    gsap.from(".navbar-nav .nav-item", {
-      opacity: 0,
-      y: 20,
-      duration: 1,
-      ease: "power3.out",
-      stagger: 0.2, // Delay between each item
-      delay: 0.5, // Wait for the navbar animation to complete
-    });
-
-    document.getElementById("toggleSidebar").addEventListener("click", () => {
-      const sidebar = document.getElementById("sidebar");
-      sidebar.classList.add("active");
-      document.querySelector(".content").classList.add("shifted");
-    });
-    
-    document.getElementById("closeSidebar").addEventListener("click", () => {
-      const sidebar = document.getElementById("sidebar");
-      sidebar.classList.remove("active");
-      document.querySelector(".content").classList.remove("shifted");
-    });
-    
-  </script>
-
-
-  <!-- hero -->
-  <!--  -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
-
-
-  <style>
-    .about-container {
-
-      display: flex;
-      justify-content: space-between;
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-      flex-wrap: wrap;
-    }
-
-    .mainbutton {
-      top: 27px;
-      position: relative;
-            height: 54px;
-      width: 172px;
-              margin-top: 20px;
-              background-color: #C61300;
-              color: white;
-              padding: 10px 20px;
-              border: none;
-              border-radius: 8px;
-              font-size: 16px;
-              cursor: pointer;
-    }
-    .about-text {
-      flex: 1;
-      padding-right: 20px;
-      display: flex;
-      flex-direction: column;
-      width: 502px;
-      /* Set the width for the about text */
-      height: 362px;
-      /* Set the height for the about text container */
-    }
-
-    .heading-container {
-      width: 454px;
-      /* Set the width for the heading */
-      margin-bottom: 20px;
-    }
-
-    .heading-container h1 {
-      font-size: 53px;
-      font-weight: bold;
-      color: #333;
-    }
-
-    .heading-container h4 {
-        display: none;
-    }
-
-  
-    .paragraphs-container {
-      width: 502px;
-      /* Set the width for the paragraphs */
-      margin-bottom: 20px;
-    }
-
-    .heading-container {
-      margin-bottom: -26px;
-      /* Reduced gap */
-    }
-
-    .paragraphs-container {
-      margin-top: 10px;
-      /* Reduced gap */
-    }
-
-    .paragraphs-container {
-      margin-bottom: 20px;
-      /* Add gap at the bottom */
-    }
-
-    .flex.items-center {
-      margin-top: 20px;
-      /* Add gap at the top of the next section */
-
-    }
-
-    .paragraphs-container p {
-      letter-spacing: -0.02px;
-      line-height: 33px;
-      font-weight: 700;
-      font-style: normal;
-      font-family: 'Intel';
-      color: #4E5253;
-      font-size: 20px;
-      color: #554;
-      line-height: 1.6;
-      margin-top: 19px;
-  }
-
-
-
-    .aboutbigbox {
-      position: relative;
-      top: 41px;
-      order: 2;
-      /* Default placement after the text section */
-    }
-
-    .images-container {
-      display: flex;
-      flex-direction: row;
-      /* Arrange main image and square images side by side */
-      align-items: flex-start;
-      gap: 20px;
-      /* Gap between main image and square images */
-    }
-
-    .main-image {
-      width: 282px;
-      height: 504px;
-      border-radius: 10px;
-      object-fit: cover;
-    }
-
-    .square-images {
-      display: flex;
-      flex-direction: column;
-      /* Arrange square images in a column */
-      gap: 20px;
-      /* Remove gap between square images */
-    }
-
-    .square-images img {
-      width: 267px;
-      /* Slightly smaller width to align with the main image */
-      height: 241px;
-      /* Half the height of the main image */
-      border-radius: 13px;
-      object-fit: cover;
-    }
-
-    @media (max-width: 480px) {
-      
-
-      .navbar {
-        height: auto;
-        width: 100%;
-      }
-
-      .navbar-toggler {
-        top: 0;
-        margin-top: -3%;
-        margin-right: 5%;
-        position: relative;
-      }
-
-      .navbar-nav .nav-link {
-        font-size: 14px;
-      }
-   
-      .about-container {
-        position: relative;
-        left: 70px;
-      }
-
-      .images-container {
-        position: relative;
-        top: 30px;
-        left: -15px;
-        flex-direction: row;
-        /* Keep images in a row for mobile */
-        align-items: center;
-        justify-content: center;
-        gap: 14px;
-        /* Smaller gap on mobile */
-      }
-
-      .paragraphs-container {
-        right: -7px;
-        position: relative;
-        top: 576px;
-      }
-
-      
-      .paragraphs-container p{
-        letter-spacing: -0.02px;
-        line-height: 33px;
-        font-weight: 700;
-        font-style: normal;
-        font-family: 'Intel';
-        color: #4E5253;
-        text-align: center;
-        right: 98px;
-        position: relative;
-        width: 137%;
-        margin-top: 99px;
-        font-size: 21px;
-   
-      }
-
-      .number {
-        font-family: 'Intel';
-        position: relative;
-        right: 22px;
-      }
-      .aboutbigbox {
-        left: 61px;
-        position: relative;
-        top: -217px;
-      }
-
-      .mainbutton {
-       left: -34px;
-        top: -1px;
-        position: relative;
-      }
-
-
-      .main-image {
-        position: relative;
-        width: 55%;
-        height: 357px;
-      }
-
-      .square-images {
-        flex-direction: column;
-        /* Stack square images vertically */
-        width: 50%;
-      
-      }
-
-      .square-images img {
-        width: 168%;
-        height: 168px;
-      }
-    }
-
-    /* Media Queries for Mobile Screen Sizes */
-    @media (max-width: 768px) {
-      .about-container {
-        position: relative;
-        left: 102px;
-      }
-
-      .images-container {
-        position: relative;
-        top: 30px;
-        left: -15px;
-        flex-direction: row;
-        /* Keep images in a row for mobile */
-        align-items: center;
-        justify-content: center;
-        gap: 14px;
-        /* Smaller gap on mobile */
-      }
-
-      .paragraphs-container {
-        right: -7px;
-        position: relative;
-        top: 609px;
-      }
-
-     
-
-      .heading-container h1{
-        position: relative;
-        right: -24px;
-      }
-
-      .paragraphs-container p{
-        letter-spacing: -0.02px;
-        line-height: 33px;
-        font-weight: 700;
-        font-style: normal;
-        font-family: 'Intel';
-        color: #4E5253;
-        text-align: center;
-        /* text-align: unset; */
-        right: 63px;
-        position: relative;
-        width: 126%;
-        margin-top: 8px;
-        font-size: 22px;
-   
-      }
-
-      .number {
-        font-family: 'Intel';
-        position: relative;
-        right: -55px;
-      }
-
-      .mainbutton {
-        right: -155px;
-    top: 1px;
-    position: relative;
-      }
-      .aboutbigbox {
-        left: 0px;
-        position: relative;
-        top: -188px;
-      }
-
-     
-
-
-      .main-image {
-        position: relative;
-        width: 282px;
-        height: 504px;
-      }
-
-      .square-images {
-        flex-direction: column;
-        /* Stack square images vertically */
-        width: 50%;
-      
-      }
-
-      .square-images img {
-        width: 267px;
-        height: 241px;
-      }
-    }
-    @media (max-width: 468px) {
-      .about-container {
-        position: relative;
-        left: 70px; /* Adjusted for smaller screens */
-      }
-
-      .images-container {
-        position: relative;
-        top: 20px; /* Adjusted for smaller screens */
-        left: -10px; /* Adjusted for smaller screens */
-        flex-direction: column; /* Stack images vertically for better layout */
-        align-items: center;
-        justify-content: center;
-        gap: 10px; /* Reduced gap */
-      }
-
-      .paragraphs-container {
-        right: -35px;
-        position: relative;
-        top: 900px;
-        width: 50%;
-      }
-
-      .heading-container h1 {
-        display: none;
-      }
-
-      .heading-container h4 {
-        display: block;
-        width: 70%;
-        margin-left: -10%;
-      }
-
-      .paragraphs-container p {
-        letter-spacing: -0.02px;
-        line-height: 28px; /* Adjusted line-height */
-        font-weight: 700;
-        font-style: normal;
-        font-family: 'Intel';
-        color: #4E5253;
-        text-align: center;
-        right: 50px; /* Adjusted for smaller screens */
-        position: relative;
-        width: 100%; /* Adjusted width */
-        margin-top: 8px;
-        font-size: 18px; /* Adjusted font size */
-      }
-
-      .number {
-        font-family: 'Intel';
-        position: relative;
-        right: 70px; /* Adjusted for smaller screens */
-      }
-
-      .mainbutton {
-        right: -125px; /* Adjusted for smaller screens */
-        top: 1px;
-        position: relative;
-      }
-
-      .aboutbigbox {
-        left: 0px;
-        position: relative;
-        margin-top: -20%;
-      }
-
-      .main-image {
-        position: relative;
-        width: 200px; /* Adjusted for smaller screens */
-        height: 370px; /* Adjusted for smaller screens */
-      }
-
-      .square-images {
-        flex-direction: column; /* Stack square images vertically for smaller screens */
-        width: 100%;
-      }
-
-      .square-images img {
-        width: 220px; /* Adjusted for smaller screens */
-        height: 200px; /* Adjusted for smaller screens */
-      }
-    }
-
-  </style>
-
-  <!-- About Section Start -->
+  <!-- Hero Section Start -->
   <section class="about-container">
-    <!-- About Text Section -->
     <div class="about-text">
-      <!-- Heading Section -->
       <div class="heading-container">
-        <h1 style="font-size: 36px; font-weight: bold; color: #333; text-align: left;">
-          Comfortable PG Stays at <span>&</span> <span style="color: #C61300;"> SHIVSHAKTI PG BOOKING</span>
-        </h1>
-        <h4 style="font-size: 24px; font-weight: bold; color: #333; text-align: left;">
-          Comfortable PG Stays at <span>&</span> <span style="color: #C61300;"> SHIVSHAKTI PG BOOKING</span>
-        </h4>
+        <h1>Comfortable PG Stays at <span>&</span> <span class="highlighted">SHIVSHAKTI PG BOOKING</span></h1>
+        <h4>Comfortable PG Stays at <span>&</span> <span class="highlighted">SHIVSHAKTI PG BOOKING</span></h4>
       </div>
 
-      <!-- Description Section -->
       <div class="paragraphs-container">
-        <p style="color: #000;">Find the perfect PG. Affordable, comfortable, and convenient options designed to make you feel at home.</p>
+        <p>Find the perfect PG. Affordable, comfortable, and convenient options designed to make you feel at home.</p>
 
-        <div class="number" style="display: flex; align-items: center;">
-          <div style="display: flex; align-items: center; margin-right: 40px;">
-            <span style="font-size: 28px; font-weight: bold; color: #000;">421</span>
-            <span style="font-size: 16px; font-weight: bold; color: #C61300; margin-left: 8px;">PG Rooms Available</span>
-          </div>
-          <div style="display: flex; align-items: center;">
-            <span style="font-size: 28px; font-weight: bold; color: #000;">451</span>
-            <span style="font-size: 16px; font-weight: bold; color: #C61300; margin-left: 8px;">Happy Residents</span>
-          </div>
+        <div class="number">
+          <div><span class="bold-text">421</span> <span class="sub-text">PG Rooms Available</span></div>
+          <div><span class="bold-text">451</span> <span class="sub-text">Happy Residents</span></div>
         </div>
-        
 
-        <a href="./pglisting.html" class="mainbutton" style="text-decoration: none; display: inline-block;">
-          Book Now <i class="fas fa-arrow-right" style="    top: 4px;
-    height: -52px;
-    position: relative;
-    margin-left: 8px;
-    font-size: 23px;"></i>
-        </a>
-        
+        <a href="./pglisting.html" class="mainbutton">Book Now <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
 
-
-    <!-- Images Section -->
     <div class="aboutbigbox">
       <div class="images-container">
-        <!-- Main Image -->
         <img src="./heropagemain.webp" alt="Main Image" class="main-image">
-
-        <!-- Square Images -->
         <div class="square-images">
           <img src="./heropagemaintopright.webp" alt="Square Image 1">
           <img src="./heropagemainbottpright.webp" alt="Square Image 2">
         </div>
       </div>
-
-
     </div>
   </section>
+  <!-- Hero Section End -->
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // Removed Heading Animation
-
-      // Paragraphs Animation
-   // Paragraphs Animation on Page Load
-gsap.from(".paragraphs-container p", {
-  y: 30,
-  opacity: 0,
-  duration: 1,
-  stagger: 0.3, // Stagger appearance of paragraphs
-  ease: "power3.out",
-});
-
-
-      // Stats Animation
-      const stats = document.querySelectorAll(".about-text div span:first-child");
-      stats.forEach((stat) => {
-        const isNumeric = /^\d+$/.test(stat.textContent); // Check if content is numeric
-        if (isNumeric) {
-          const countTo = parseInt(stat.textContent);
-          gsap.fromTo(
-            stat,
-            { textContent: 0 },
-            {
-              textContent: countTo,
-              scrollTrigger: {
-                trigger: stat,
-                start: "top 90%",
-              },
-              duration: 2,
-              ease: "power3.out",
-              snap: { textContent: 1 }, // Snap to integer values
-            }
-          );
-        }
-      });
-
-      // Button Animation
-      gsap.from("button", {
-        scrollTrigger: {
-          trigger: "button",
-          start: "top 90%",
-        },
-        scale: 0.8,
-        opacity: 0,
-        duration: 0.8,
-        ease: "back.out(1.7)",
-      });
-
-      // Images Animation
-      gsap.from(".main-image", {
-        scrollTrigger: {
-          trigger: ".main-image",
-          start: "top 85%",
-        },
-        x: -50,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-      });
-
-      gsap.from(".square-images img", {
-        scrollTrigger: {
-          trigger: ".square-images",
-          start: "top 85%",
-        },
-        x: 50,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power3.out",
-      });
-    });
-
-    document.addEventListener("DOMContentLoaded", () => {
-      // New Scroll-Up and Scroll-Down Animation (Parallax Effect)
-      gsap.to(".aboutbigbox", {
-        y: -50, // Moves the images upwards as you scroll down
-        ease: "power1.out",
-        scrollTrigger: {
-          trigger: ".about-container",
-          start: "top bottom", // Start when the section enters the viewport
-          end: "bottom top",   // End when the section leaves the viewport
-          scrub: true,         // Scrub ties animation to scroll speed
-        },
-      });
-
-      gsap.to(".about-text", {
-        y: 30, // Moves the text block downwards as you scroll up
-        ease: "power1.out",
-        scrollTrigger: {
-          trigger: ".about-container",
-          start: "top bottom", // Start when the section enters the viewport
-          end: "bottom top",   // End when the section leaves the viewport
-          scrub: true,         // Scrub ties animation to scroll speed
-        },
-      });
-    });
-  </script>
-
-
-  <!-- hero end -->
-
-  <!--  -->
-  <style>
-    .luxury {
-      font-family: Arial, sans-serif;
-      color: #1f2937;
-      padding: 2rem 0;
-    }
-
-    .container13 {
-      max-width: 125%;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .luxury-title {
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 1.5rem;
-    }
-
-    .luxury-description {
-      font-style: normal;
-      font-size: 1.125rem;
-      color: #C61300;
-      margin-bottom: 1.5rem;
-    }
-
-    .infinite-scroll-wrapper {
-      position: relative;
-      display: flex;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .scroll-content {
-      display: inline-flex;
-      animation: scroll-loop 10s linear infinite;
-    }
-
-    .scroll-content img {
-      width: 300px;
-      height: 200px;
-      margin: 0 10px;
-      border-radius: 0.5rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Duplicate scrolling animation for seamless loop */
-    @keyframes scroll-loop {
-      0% {
-        transform: translateX(0);
-      }
-
-      100% {
-        transform: translateX(-40%);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .luxury {
-        top: 60px;
-        position: relative;
-        left: 20px;
-      }
-
-      .infinite-scroll-wrapper {
-        right: 63px;
-        position: relative;
-        width: 876px;
-      }
-
-      .container13 {
-        right: 64px;
-        position: relative;
-        width: 100%;
-      }
-
-      .scroll-content img {
-        width: 291px;
-        height: 195px;
-      }
-
-      .luxury-title {
-        left: 38px;
-        position: relative;
-      }
-
-      .luxury-description {
-        left: 38px;
-        position: relative;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .luxury {
-        top: 120px;
-        position: relative;
-        left: 125px;
-
-      }
-
-      .infinite-scroll-wrapper {
-        right: 63px;
-        position: relative;
-        width: 471px;
-
-      }
-
-      .container13 {
-        right: 160px;
-        position: relative;
-        width: 100%;
-      }
-
-      .scroll-content img {
-        width: 291px;;
-        height: 195px;
-      }
-
-      .luxury-title {
-        left: 38px;
-        position: relative;
-      }
-
-      .luxury-description {
-        left: 38px;
-        position: relative;
-      }
-    }
-  </style>
-
+  <!-- Luxury Section -->
   <section class="luxury">
     <div class="container13">
       <h1 class="luxury-title">Choose Your Luxurious Room</h1>
-      <p class="luxury-description" >
+      <p class="luxury-description">
         Discover the comfort and elegance of our luxury rooms designed to provide an exceptional experience.
       </p>
 
       <div class="infinite-scroll-wrapper">
-        <!-- Duplicate images for seamless looping -->
         <div class="scroll-content">
+          <!-- Room Images -->
           <img src="./scrooll1.png" alt="Room 1">
           <img src="./scrooll2.png" alt="Room 2">
           <img src="./scrooll3.png" alt="Room 3">
           <img src="./scrooll4.png" alt="Room 4">
           <img src="./scrooll5.png" alt="Room 5">
-          <!-- Duplicate content -->
+          <!-- Duplicate content for seamless loop -->
           <img src="./scrooll1.png" alt="Room 1">
           <img src="./scrooll2.png" alt="Room 2">
           <img src="./scrooll3.png" alt="Room 3">
@@ -1029,870 +126,103 @@ gsap.from(".paragraphs-container p", {
     </div>
   </section>
 
+  <!-- City of Dreams Section (New) -->
+  <section class="pgmap">
+    <div class="pgmap-container">
+      <!-- Left Side: Animated Image Gallery -->
+      <div class="col-lg-6 col-md-6 col-12 d-flex align-items-center">
+        <div class="pgmap-image-gallery w-100">
+          <h1 class="pgmap-heading">Mumbai - <span>The City of Dreams</span></h1>
+          <img src="https://websiteupload.s3.ap-south-1.amazonaws.com/media/2024/07/661970d3ba6e05.webp" alt="Image 1" class="gsap-animate">
+          <img src="https://websiteupload.s3.ap-south-1.amazonaws.com/media/2024/07/6619721753c549.webp" alt="Image 2" class="gsap-animate">
+        </div>
+      </div>
 
-  <!--  -->
+      <!-- Right Side: Google Map and Iframe -->
+      <div class="col-lg-6 col-md-6 col-12">
+        <div class="pgmap-map-container">
+          <iframe class="pgmap-map-iframe"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14009.704409474313!2d77.21672136452635!3d28.632212539467045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd7b2a8cbb0d%3A0x870b98d80c116713!2sConnaught%20Place%2C%20New%20Delhi%2C%20Delhi%20110001!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+            allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <section class="pg-rooms">
+    <div class="pg-container">
+      <h1 class="pg-heading">Welcome to <span>SHIVSHAKTI PG BOOKING</span></h1>
+      <div class="pg-house-grid">
+        <div class="pg-house-card">
+          <img src="room1.png" alt="Room 1">
+          <h3>Royal Heights PG</h3>
+          <p><strong>Type:</strong> Girls</p>
+          <p><strong>Address:</strong> 32, Connaught Place, New Delhi</p>
+          <p><strong>Zone:</strong> West Delhi</p>
+          <p><strong>Rent Start:</strong> ₹18,000.00</p>
+          <button>View Details</button>
+        </div>
+        <div class="pg-house-card">
+          <img src="room2.png" alt="Room 2">
+          <h3>Elite Stay PG</h3>
+          <p><strong>Type:</strong> Boys</p>
+          <p><strong>Address:</strong> 45, South Extension, Delhi</p>
+          <p><strong>Zone:</strong> South Delhi</p>
+          <p><strong>Rent Start:</strong> ₹16,500.00</p>
+          <button>View Details</button>
+        </div>
+        <div class="pg-house-card">
+          <img src="room3.png" alt="Room 3">
+          <h3>Cozy Nest PG</h3>
+          <p><strong>Type:</strong> Co-Living</p>
+          <p><strong>Address:</strong> 120, Green Park, Delhi</p>
+          <p><strong>Zone:</strong> Central Delhi</p>
+          <p><strong>Rent Start:</strong> ₹15,000.00</p>
+          <button>View Details</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   
-<style>
-  /* General styles */
-.pgmap-container {
-  height: 100vh;
-  display: flex;
-  flex-wrap: nowrap;
-  /* Prevent wrapping */
-}
-
-.pgmap-heading {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333;
-  text-align: center;
-  margin-bottom: 15px;
-  white-space: nowrap; /* Prevents the heading from wrapping to the next line */
-}
-
-.pgmap-heading span {
-  color:#C61300;
-}
-
-/* Image gallery styles */
-.pgmap-image-gallery {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px;
-  height: 100%;
-  /* Full height of the container */
-  justify-content: space-between;
-}
-
-.pgmap-image-gallery img {
-  width: 100%;
-  /* Ensure the image takes up full width */
-  height: 43%;
-  /* Adjust height to ensure three images fit */
-  object-fit: cover;
-  /* Maintain aspect ratio and cover the space */
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-}
-
-.gsap-animate {
-  opacity: 0;
-  transform: scale(0.8);
-}
-
-/* Horizontal Scrolling Images */
-.scrolling-images {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
-  height: 200px;
-}
-
-.scrolling-images img {
-  height: 100%;
-  object-fit: cover;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Scroll effect setup */
-.scroll-left {
-  animation: scroll-left 20s linear infinite;
-}
-
-.scroll-right {
-  animation: scroll-right 20s linear infinite;
-}
-
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes scroll-right {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-/* Map and iframe styles */
-.pgmap-map-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-#pgmap {
-  width: 100%;
-  height: 100%;
-  border-radius: 0;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.pgmap-map-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 0;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Responsive layout adjustments */
-@media (max-width: 768px) {
-  .pgmap-container {
-    bottom: 230px;
-    position: relative;
-    flex-direction: column;
-    /* Stack layout on small screens */
-  }
-
-  .pgmap-image-gallery {
-    height: auto;
-    flex-direction: row; /* Arrange images in a row */
-    justify-content: space-between;
-    padding: 0 10px;
-  }
-
-  /* Adjust height to ensure images are 549px on mobile */
-  .pgmap-image-gallery img {
-    right: 270px;
-        position: relative;
-        top: 325px;
-        height: 300px;
-        width: 111%;
-        object-fit: cover;
-  }
-
-  .pgmap-container {
-    bottom: 58px;
-    position: relative;
-  }
-
-  .pgmap-heading {
-    font-size: 1.5rem;
-    position: relative;
-    margin-bottom: 15px;
-    left: 186px;
-    top: 234px;
-    text-align: center;
-  }
-
-  .pgmap-map-container {
-    left: 25px;
-    bottom: -416px;
-    position: relative;
-    width: 185%;
-    height: 308%;
-  }
-}
-
-@media (max-width: 468px) {
-  .pgmap-container {
-    bottom: 100px; /* Adjusted position */
-    position: relative;
-    flex-direction: column; /* Stack layout on small screens */
-  }
-
-  .pgmap-image-gallery {
-    height: auto;
-    flex-direction: column; /* Stack images vertically for better readability */
-    justify-content: center;
-    align-items: center; /* Center-align images */
-    padding: 0 5px; /* Adjusted padding */
-  }
-
-  .pgmap-image-gallery img {
-    top: 300px;
-    right: 0px;
-    height: 250px; /* Adjusted height */
-    width: 100%; /* Adjusted width */
-    object-fit: cover; /* Maintain aspect ratio */
-  }
-
-  .pgmap-heading {
-    font-size: 1.6rem; /* Adjusted font size */
-    position: relative;
-    margin-bottom: 10px; /* Adjusted margin */
-    left: 0; /* Center-align heading */
-    top: 270px; /* Adjusted position */
-    text-align: center; /* Center-align text */
-  }
-
-  .pgmap-map-container {
-    left: 0; /* Center-align map container */
-    bottom: -370px; /* Adjusted position */
-    position: relative;
-    width: 100%; /* Adjusted width */
-    height: auto; /* Maintain aspect ratio */
-  }
-}
-
-
-</style>
-  <div class="pgmap-container">
-    <!-- Left Side: Animated Image Gallery -->
-    <div class="col-lg-6 col-md-6 col-12 d-flex align-items-center">
-      <div class="pgmap-image-gallery w-100">
-        <h1 class="pgmap-heading">Mumbai - <span>The City of Dreams</span></h1>
-        <img src="https://websiteupload.s3.ap-south-1.amazonaws.com/media/2024/07/661970d3ba6e05.webp" alt="Image 1"
-          class="gsap-animate">
-        <img src="https://websiteupload.s3.ap-south-1.amazonaws.com/media/2024/07/6619721753c549.webp" alt="Image 2"
-          class="gsap-animate">
-      </div>
-    </div>
-
-    <!-- Right Side: Google Map and Iframe -->
-    <div class="col-lg-6 col-md-6 col-12">
-      <div class="pgmap-map-container">
-        <!-- Google Maps Iframe for mobile -->
-        <iframe class="pgmap-map-iframe"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14009.704409474313!2d77.21672136452635!3d28.632212539467045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd7b2a8cbb0d%3A0x870b98d80c116713!2sConnaught%20Place%2C%20New%20Delhi%2C%20Delhi%20110001!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-          allowfullscreen="" loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <!-- GSAP and ScrollTrigger Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-  <script>
-    // GSAP Animation for Images
-    const images = document.querySelectorAll('.gsap-animate');
-    gsap.fromTo(
-      images,
-      { opacity: 0, scale: 0.8, y: 50 },
-      {
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        duration: 1,
-        stagger: 0.3,
-        scrollTrigger: {
-          trigger: ".pgmap-image-gallery",
-          start: "top 80%",
-          end: "top 30%",
-          toggleActions: "play none none none",
-        },
-      }
-    );
-  </script>
-
-  <!--  -->
-
-  <!-- Include GSAP and ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-  <style>
-    .rooms {
-      font-family: Arial, sans-serif;
-    }
-
-    .container14 {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 16px;
-      opacity: 0;
-      transform: translateY(50px);
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 28px;
-      margin-bottom: 16px;
-      color: #333;
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 24px;
-      margin-bottom: 24px;
-    }
-
-    .house-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 16px;
-    }
-
-    .house-card {
-      background-color: #fff;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      overflow: hidden;
-      padding: 16px;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(50px);
-    }
-
-    .house-card img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin-bottom: 12px;
-    }
-
-    .house-card h3 {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .house-card p {
-      font-size: 14px;
-      color: #666;
-      margin: 4px 0;
-    }
-
-    .house-card button {
-      width: 149px;
-      background-color: #C61300;
-      color: #fff;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 14px;
-      margin-top: 12px;
-    }
-
-    .house-card button:hover {
-      background-color: #e75241;
-    }
-
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 24px;
-      }
-
-      .rooms {
-        /* left: 114px; */
-        top: 269px;
-        width: 100%;
-        position: relative;
-      }
-
-      h2 {
-        font-size: 20px;
-      }
-
-      .house-card {
-        padding: 12px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .rooms {
-        width: 100%;
-       /* left: 114px; */
-        top: 359px;
-        position: relative;
-      }
-
-      h1 {
-        font-size: 24px;
-      }
-
-      h2 {
-        font-size: 20px;
-      }
-
-      .house-grid {
-        height: 561px;
-      }
-
-      .house-card {
-        height: 671px;
-        padding: 12px;
-      }
-    }
-  </style>
-
-  <section class="rooms">
-    <div class="container14">
-      <h1>Welcome to SHIVSHAKTI PG BOOKING –<br><span style="color: #C61300;">Your Gateway to Quality and Comfort in PG Living</span></h1>
-      <div class="house-grid">
-        <div class="house-card">
-          <img src="./room1.png" alt="Roselands House">
-          <h3>Royal Heights PG</h3>
-          <p>Type: Girls</p>
-          <p>Address: 32, Connaught Place, New Delhi, Delhi 110001</p>
-          <p>Zone: West Delhi</p>
-          <p>Rent Start: ₹18000.00</p>
-          <button>View detals</button>
-        </div>
-        <div class="house-card">
-          <img src="./room2.png" alt="Woodlandside">
-          <h3>Royal Heights PG</h3>
-          <p>Type: Girls</p>
-          <p>Address: 32, Connaught Place, New Delhi, Delhi 110001</p>
-          <p>Zone: West Delhi</p>
-          <p>Rent Start: ₹18000.00</p>
-          <button>View detals</button>
-        </div>
-        <div class="house-card">
-          <img src="./room3.png" alt="The Old Lighthouse">
-          <h3>Royal Heights PG</h3>
-          <p>Type: Girls</p>
-          <p>Address: 32, Connaught Place, New Delhi, Delhi 110001</p>
-          <p>Zone: West Delhi</p>
-          <p>Rent Start: ₹18000.00</p>
-          <button>View detals</button>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Animate the container
-      gsap.to(".container14", {
-        opacity: 1,
-        y: 0,
-        ease: "power3.out",
-        duration: 2,
-        scrollTrigger: {
-          trigger: ".container14",
-          start: "top bottom",
-          end: "top center",
-          scrub: true,
-        },
-      });
-
-      // Animate the headline
-      gsap.to("h1", {
-        opacity: 1,
-        y: 0,
-        ease: "power3.out",
-        duration: 2,
-        scrollTrigger: {
-          trigger: "h1",
-          start: "top bottom",
-          end: "top center",
-          scrub: true,
-        },
-      });
-
-      // Animate each card in the grid
-      gsap.utils.toArray(".house-card").forEach((card, index) => {
-        gsap.to(card, {
-          opacity: 1,
-          y: 0,
-          ease: "power3.out",
-          duration: 1.5,
-          delay: index * 0.2,
-          scrollTrigger: {
-            trigger: card,
-            start: "top bottom",
-            end: "top center",
-            scrub: true,
-          },
-        });
-      });
-    });
-  </script>
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <style>
-    /* General Styles */
-
-    .services-container {
-      font-family: Arial, sans-serif;
-      width: 100%;
-      max-width: 1200px;
-      left: 193px;
-      padding: 20px;
-    }
-
-    .services-title {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #1f2937;
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    /* Grid Layout for Services */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(1, 1fr);
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    /* Card Styles */
-    .service-card {
-      background-color: white;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .service-card img {
-      max-width: 100px;
-      margin: 0 auto;
-    }
-
-    .service-card h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #1f2937;
-      margin-top: 20px;
-    }
-
-    .service-card p {
-      color: #4b5563;
-      margin-top: 10px;
-    }
-
-    /* Media Queries for Responsiveness */
-    @media (min-width: 768px) {
-      .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .services-container {
-        position: relative;
-        /* left: -15px; */
-      }
-
-    }
-
-    @media (max-width: 480px) {
-
-      .services-container {
-        top: 1800px;
-        position: relative;
-        margin-top: 40%;
-        left: 0px;
-      }
-
-
-    }
-
-
-    @media (min-width: 1024px) {
-      .services-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-  </style>
   <div class="services-container">
     <h2 class="services-title">What Services, We Give You!</h2>
     <div class="services-grid">
       <div class="service-card">
         <img src="./logo1.png" alt="Free Wifi">
         <h3>Free Wifi</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie odio egestas elementum gravida. Turpis et
-        </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie odio egestas elementum gravida.</p>
       </div>
       <div class="service-card">
         <img src="./logo2.png" alt="Beauty & Health">
         <h3>Beauty & Health</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie odio egestas elementum gravida. Turpis et
-        </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie odio egestas elementum gravida.</p>
       </div>
       <div class="service-card">
         <img src="./logo3.png" alt="Support Team">
         <h3>Support Team</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie odio egestas elementum gravida. Turpis et
-        </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie odio egestas elementum gravida.</p>
       </div>
       <div class="service-card">
         <img src="./logo4.png" alt="Easy Booking">
         <h3>Easy Booking</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie odio egestas elementum gravida. Turpis et
-        </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie odio egestas elementum gravida.</p>
       </div>
       <div class="service-card">
         <img src="./logo5.png" alt="Swimming Pool">
         <h3>Swimming Pool</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie odio egestas elementum gravida. Turpis et
-        </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie odio egestas elementum gravida.</p>
       </div>
       <div class="service-card">
         <img src="./logo6.png" alt="Restaurant">
         <h3>Restaurant</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie odio egestas elementum gravida. Turpis et
-        </p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie odio egestas elementum gravida.</p>
       </div>
     </div>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Animate the services container (Initial state: hidden and below)
-      gsap.from(".services-container", {
-        opacity: 0,
-        y: 100, // Start position below the screen
-        ease: "power3.out",
-        duration: 2,
-        scrollTrigger: {
-          trigger: ".services-container",
-          start: "top bottom", // Trigger when top of the container reaches the bottom of the viewport
-          end: "top center", // End when top reaches the center of the viewport
-          scrub: true,
-        },
-      });
-
-      // Animate the services title (Initial state: hidden and below)
-      gsap.from(".services-title", {
-        opacity: 0,
-        y: 50, // Start position below the screen
-        ease: "power3.out",
-        duration: 2,
-        scrollTrigger: {
-          trigger: ".services-title",
-          start: "top bottom",
-          end: "top center",
-          scrub: true,
-        },
-      });
-
-      // Animate each service card (Initial state: hidden and below)
-      gsap.utils.toArray(".service-card").forEach((card, index) => {
-        gsap.from(card, {
-          opacity: 0,
-          y: 50, // Start position below the screen
-          ease: "power3.out",
-          duration: 1.5,
-          delay: index * 0.2,
-          scrollTrigger: {
-            trigger: card,
-            start: "top bottom",
-            end: "top center",
-            scrub: true,
-          },
-        });
-      });
-    });
-  </script>
-
-
-
-
-
-  <style>
-    /* Container Styles */
-    .illustration-container {
-      position: relative;
-      width: 100%;
-      height: auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      background: radial-gradient(circle, rgba(255, 255, 255, 1) -27%, rgba(220, 53, 69, 0.2) 21%);
-      padding: 20px;
-      margin: 50px auto;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
-    }
-
-    /* Left Side Content */
-    .content {
-      flex: 1 1 50%;
-      padding: 16px;
-      text-align: left;
-    }
-
-    .content h1 {
-      position: relative;
-      left: -48px;
-      font-size: 24px;
-      font-weight: bold;
-      color: #dc3545;
-      margin-bottom: 8px;
-    }
-
-    .content p {
-      position: relative;
-      left: 127px;
-      font-size: 16px;
-      color: #333;
-      margin-bottom: 16px;
-    }
-
-    .content button {
-      position: relative;
-      left: 127px;
-      background-color: #dc3545;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .content button:hover {
-      background-color: #c61300;
-    }
-
-    /* Right Side Illustration */
-    .illustration {
-      flex: 1 1 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-    }
-
-    .illustration img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
-    /* Responsive Styles */
-    @media (max-width: 768px) {
-      .illustration-container {
-        /* top: 1459px; */
-        position: relative;
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        background: radial-gradient(circle, rgba(255, 255, 255, 1) -27%, rgba(220, 53, 69, 0.2) 21%);
-        padding: 20px;
-        margin: 50px auto;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 12px;
-      }
-
-
-
-      .content {
-        padding: 20px;
-      }
-
-
-      .content h1 {
-        position: relative;
-        left: -48px;
-        font-size: 24px;
-        font-weight: bold;
-        color: #dc3545;
-        margin-bottom: 8px;
-      }
-
-      .content p {
-        position: relative;
-        left: -20px;
-        font-size: 14px;
-        color: #333;
-        margin-bottom: 16px;
-      }
-
-      .content button {
-        left: -16px;
-        position: relative;
-        top: 0px;
-        background-color: #dc3545;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 8px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-
-
-      .content button {
-        font-size: 14px;
-      }
-
-      .illustration img {
-        width: 80%;
-      }
-    }
-
-    @media (max-width: 480px) {
-
-      .illustration-container {
-        top: 1800px;
-        position: relative;
-        width: 100%;
-        height: auto;
-
-      }
-
-      .content h1 {
-        position: relative;
-        left: -13px;
-        font-size: 24px;
-        font-weight: bold;
-        color: #dc3545;
-        margin-bottom: 8px;
-      }
-
-      .content p {
-        position: relative;
-        left: 7px;
-        font-size: 14px;
-        color: #333;
-        margin-bottom: 16px;
-      }
-
-      .content button {
-        left: 2px;
-        position: relative;
-        top: 0px;
-        background-color: #dc3545;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 8px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-
-
-      .content button {
-        font-size: 13px;
-        padding: 8px 16px;
-      }
-
-      .illustration img {
-        width: 100%;
-      }
-    }
-  </style>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
   <div class="illustration-container">
     <!-- Left Side Content -->
@@ -1900,7 +230,7 @@ gsap.from(".paragraphs-container p", {
       <h1>Find Your Ideal PG Today!</h1>
       <p>Discover comfortable and affordable PG accommodations tailored to your needs.</p>
       <p>Start your journey with SHIVSHAKTI PG BOOKING now.</p>
-      <button class="find">Find Now</button>
+      <button>Find Now</button>
     </div>
 
     <!-- Right Side Illustration -->
@@ -1909,81 +239,73 @@ gsap.from(".paragraphs-container p", {
     </div>
   </div>
 
-  <!--  -->
 
-  <!-- Font Awesome CDN -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
-  <style>
-    @media (max-width: 480px) {
-
-      .bg-white {
-        /* left: 193px; */
-        position: relative;
-        top: 1759px;
-      }
-    }
-  </style>
-
-  <!-- Bootstrap 5 Footer -->
-  <!-- Bootstrap 5 Footer -->
-
-  <footer class="bg-white py-5">
-    <div class="container">
-      <div class="row text-center text-md-start">
-
-        <!-- Logo Section -->
-        <div class="col-12 col-md-3 mb-4">
-          <img href="/" src="./0-Photoroom.png" alt="Company Logo" class="img-fluid" style="max-width: 120px;">
+    <!-- Footer Section -->
+    <footer class="bg-white py-5">
+      <div class="container">
+        <div class="row text-md-start text-center footer-content">
+  
+          <!-- Logo Section -->
+          <div class="col-12 col-md-3 mb-4">
+            <img src="./0-Photoroom.png" alt="Company Logo" class="img-fluid" style="max-width: 120px;">
+          </div>
+  
+          <!-- Navigation Links -->
+          <div class="col-12 col-md-3 mb-4">
+            <h5>Navigation</h5>
+            <ul class="list-unstyled">
+              <li><a href="./home.html">Home</a></li>
+              <li><a href="./about.html">About Us</a></li>
+              <li><a href="./pglisting.html">Listings</a></li>
+              <li><a href="./contact.html">Contact</a></li>
+            </ul>
+          </div>
+  
+          <!-- Contact Information -->
+          <div class="col-12 col-md-3 mb-4">
+            <h5>Contact</h5>
+            <p>Email: <a href="mailto:contact@yourcompany.com">contact@yourcompany.com</a></p>
+            <p>Phone: <a href="tel:+1234567890">+123 456 7890</a></p>
+          </div>
+  
+          <!-- Social Media Links -->
+          <div class="col-12 col-md-3 mb-4">
+            <h5>Follow Us</h5>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
         </div>
-
-        <!-- Links Section -->
-        <div class="col-12 col-md-3 mb-4">
-          <h5>Navigation</h5>
-          <ul class="list-unstyled">
-            <li><a href="./home.html" class="text-black text-decoration-none d-block mb-2">Home</a></li>
-            <li><a href="./about.html" class="text-black text-decoration-none d-block mb-2">About Us</a></li>
-            <li><a href="./pglisting.html" class=" text-black text-decoration-none d-block mb-2">Listings</a></li>
-            <li><a href="./contact.html" class="text-black text-decoration-none d-block mb-2">Contact</a></li>
-          </ul>
-        </div>
-
-        <!-- Contact Information Section -->
-        <div class="col-12 col-md-3 mb-4">
-          <h5>Contact Information</h5>
-          <p>Email: contact@yourcompany.com</p>
-          <p>Phone: +123 456 7890</p>
-        </div>
-
-        <!-- Social Media Links Section -->
-        <div class="col-12 col-md-3 mb-4">
-          <h5>Follow Us</h5>
-          <a href="#" class="text-black me-3"><i class="fab fa-facebook fa-lg"></i></a>
-          <a href="#" class="text-black me-3"><i class="fab fa-twitter fa-lg"></i></a>
-          <a href="#" class="text-black me-3"><i class="fab fa-instagram fa-lg"></i></a>
-          <a href="#" class="text-black"><i class="fab fa-linkedin fa-lg"></i></a>
+  
+        <!-- Copyright and Disclaimer -->
+        <div class="text-center mt-4">
+          <p>Copyright © 2024 | All Rights Reserved | 
+            <a href="#">Sitemap</a>
+          </p>
+          <p>Images shown are for representational purposes only. Amenities depicted may or may not form a part of that individual property.</p>
         </div>
       </div>
-
-      <!-- Copyright and Disclaimer -->
-      <div class="text-center mt-4">
-        <p class="mb-0 text-muted">Copyright © 2024 | All Rights Reserved | <a href="#"
-            class="text-decoration-none">Sitemap</a></p>
-        <p class="mb-0 text-muted">Images shown are for representational purposes only. Amenities depicted may or may
-          not form a part of that individual property.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Bootstrap 5 and Font Awesome CDN -->
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    </footer>
+  
+    <!-- Bootstrap & Font Awesome Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  
 
 
-  <!-- Bootstrap 5 and Font Awesome CDN -->
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+  <script src="./javascript/nav.js"></script>
+  <script src="./javascript/hero.js"></script> <!-- Add hero page functionality script -->
+  <script src="./javascript/Dream.js"></script>
+  <script src="./javascript/Room.js"></script>
+  <script src="./javascript/Service.js"></script>
+  <script src="./javascript/lillustration.js"></script>
+
+
+
+
 </body>
 
 </html>

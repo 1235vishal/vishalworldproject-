@@ -1,388 +1,103 @@
 <!DOCTYPE html>
-<!-- Website - www.codingnepalweb.com -->
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8" />
-    <title>Animated Login Form | CodingNepal</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+<html lang="en">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <link rel="stylesheet" href="styles.css?v=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  
+  <!-- Correct FontAwesome Link -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
-    <style>
-      
-      *{
-        margin: 0;
-        padding: 0;
-      }
+  <link rel="stylesheet" href="./CSS/HomeStyle/nav.css">
+  <link rel="stylesheet" href="./CSS/loginform/login.css">
 
-      body {
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden; /* Prevent horizontal scrollbars */
-        width: 100%;
-        height: 100%;
-      }
-      
-    
-      .sidebar {
-        position: fixed;
-        top: 0;
-        left: -100%; /* Start completely hidden */
-        width: 50%;
-        height: 100%;
-        color: white;
-        background-color: #FFFFFF;
-        overflow-y: auto;
-        transition: all 0.3s ease;
-        z-index: 1050;
-      }
 
-      .flex-column {
-        gap: 13px;
-        flex-direction: column !important;
-    }
-  
-      .p-3 {
-        font-size: 46px;
-        padding: 1rem !important;
-    }
-  
-    @media (min-width: 992px) {
-      .navbar-expand-lg .navbar-collapse {
-          right: 36px;
-          position: relative;
-          display: flex !important
-  ;
-          flex-basis: auto;
-      }
-  }
-      
-      .sidebar.active {
-        left: 0; /* Fully visible when active */
-      }
-      
-      .content.shifted {
-        margin-left: 250px; /* Adjust margin if needed for shifted content */
-      }
-      
-  
-      .sidebar .nav-link {
-        color: rgb(0, 0, 0);
-      }
-  
-      .content {
-        margin-left: 0;
-        transition: margin-left 0.3s ease;
-      }
-  
-      @media (min-width: 992px) {
-        .navbar-expand-lg .navbar-nav {
-            gap: 32px;
-            flex-direction: row;
-        }
-    }
-  
-      .content.shifted {
-        margin-left: 250px;
-      }
-  
-      .navbar-toggler-icon {
-        cursor: pointer;
-      }
-  
-      .close-btn {
-        position: absolute;
-        top: -21px;
-    right: 10px;
-    font-size: 115px;
-        color: rgb(0, 0, 0);
-        cursor: pointer;
-      }
-      .content.shifted {
-        margin-left: 100%; /* Match the sidebar width */
-      }
-      
-  
-      @media (max-width: 768px) {
-        .logo {
-          height: 119px;
-          width: 136px;
-          position: relative;
-          right: 7px;
-          bottom: 26px;
-        }
-  
-        .navbar {
-          height: 69px;
-          width: 181%;
-        }
-  
-        .navbar-toggler {
-          top: -18px;
-          position: relative;
-        }
-      }
-      .navbar-nav .nav-link {
-        position: relative;
-        display: inline-block;
-        text-decoration: none;
-        color: #000000f9; /* Dark black color for normal state */
-        font-weight: bold; /* Bold text */
-        transition: color 0.3s ease;
-      }
-      
-      .navbar-nav .nav-link:hover {
-        color: #C61300; /* Hover color */
-      }
-      
-      .navbar-nav .nav-link::after {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 2px; /* Thickness of the underline */
-        background: #C61300; /* Underline color */
-        left: 0;
-        bottom: -5px; /* Space between text and underline */
-        transition: width 0.3s ease;
-      }
-      
-      .navbar-nav .nav-link:hover::after {
-        width: 100%;
-      }
-      
-    </style>
-  
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="./home.html">
-        <img class="logo" src="./0-Photoroom.png" alt="MyApp Logo" height="80" />
-      </a>
-      <button class="navbar-toggler ml-auto" type="button" id="toggleSidebar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          
-          <li class="nav-item"><a class="nav-link" href="./home.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="./about.html">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="./pglisting.html">PG Listing</a></li>
-          <li class="nav-item"><a class="nav-link" href="./login.html">login</a></li>
-          <li class="nav-item"><a class="nav-link" href="./registerform.html"> Signup</a></li>
-         
-        </ul>
-      </div>
-    </nav>
-  
-    <div class="sidebar" id="sidebar">
-      <span class="close-btn" id="closeSidebar">&times;</span>
-      <ul class="nav flex-column p-3">
-        
-          <li class="nav-item"><a class="nav-link" href="./home.html">Home</a></li>
+
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+  <!-- GSAP and ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="./home.html">
+      <img class="logo" src="./0-Photoroom.png" alt="Logo">
+    </a>
+    <button class="navbar-toggler" id="toggleSidebar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="./home.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="./about.html">About</a></li>
         <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
         <li class="nav-item"><a class="nav-link" href="./pglisting.html">PG Listing</a></li>
-        <li class="nav-item"><a class="nav-link" href="./login.html">login</a></li>
-        <li class="nav-item"><a class="nav-link" href="./registerform.html"> Signup</a></li>
-       
+        <li class="nav-item"><a class="nav-link" href="./login.html">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="./registerform.html">Signup</a></li>
       </ul>
     </div>
-  
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  
-    <script>
-      // Smooth GSAP animation for navbar
-      gsap.from(".navbar", {
-        opacity: 0,
-        y: -50,
-        duration: 1,
-        ease: "power3.out"
-      });
-  
-      // Staggered animation for nav links
-      gsap.from(".navbar-nav .nav-item", {
-        opacity: 0,
-        y: 20,
-        duration: 1,
-        ease: "power3.out",
-        stagger: 0.2, // Delay between each item
-        delay: 0.5, // Wait for the navbar animation to complete
-      });
-  
-      document.getElementById("toggleSidebar").addEventListener("click", () => {
-        const sidebar = document.getElementById("sidebar");
-        sidebar.classList.add("active");
-        document.querySelector(".content").classList.add("shifted");
-      });
-      
-      document.getElementById("closeSidebar").addEventListener("click", () => {
-        const sidebar = document.getElementById("sidebar");
-        sidebar.classList.remove("active");
-        document.querySelector(".content").classList.remove("shifted");
-      });
-      
-    </script>
-  
-<style>
-  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap");
+  </nav>
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <span class="close-btn" id="closeSidebar">&times;</span>
+    <ul class="nav flex-column">
+      <li class="nav-item"><a class="nav-link" href="./home.html"><i class="fas fa-home"></i> Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="./about.html"><i class="fas fa-info-circle"></i> About</a></li>
+      <li class="nav-item"><a class="nav-link" href="./contact.html"><i class="fas fa-phone-alt"></i> Contact</a></li>
+      <li class="nav-item"><a class="nav-link" href="./pglisting.html"><i class="fas fa-building"></i> PG Listing</a></li>
+      <li class="nav-item"><a class="nav-link" href="./login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+      <li class="nav-item"><a class="nav-link" href="./registerform.html"><i class="fas fa-user-plus"></i> Signup</a></li>
+    </ul>
+  </div>
 
-.wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 600px; /* Increased width */
-  width: 100%;
-  background-image: url('contactfrombg.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.wrapper h1 {
-  text-align: center;
-  padding: 30px 0; /* Increased padding for a larger header */
-  font-size: 28px; /* Larger font size */
-}
-
-.wrapper form {
-  padding: 0 50px; /* Increased padding for a larger form */
-  box-sizing: border-box;
-}
-
-form .field-group {
-  position: relative;
-  border-bottom: 2px solid #adadad;
-  margin: 40px 0; /* Increased margin between fields */
-}
-
-.field-group input {
-  width: 100%;
-  padding: 0 10px;
-  height: 50px; /* Increased height of input fields */
-  font-size: 18px; /* Larger font size */
-  border: none;
-  background: none;
-  outline: none;
-}
-
-.field-group label {
-  position: absolute;
-  top: 50%;
-  left: 10px; /* Adjusted padding */
-  color: #adadad;
-  transform: translateY(-50%);
-  font-size: 18px; /* Larger font size */
-  pointer-events: none;
-  transition: 0.5s;
-}
-
-.field-group span::before {
-  content: "";
-  position: absolute;
-  top: 50px; /* Adjusted for larger field height */
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: #2691d9;
-  transition: 0.5s;
-}
-
-.field-group input:focus ~ label,
-.field-group input:valid ~ label {
-  top: -5px;
-  color: #2691d9;
-}
-
-.field-group input:focus ~ span::before,
-.field-group input:valid ~ span::before {
-  width: 100%;
-}
-
-.recover-pass {
-  margin: -5px 0 20px 5px;
-  color: #a6a6a6;
-  cursor: pointer;
-}
-
-.recover-pass:hover {
-  text-decoration: underline;
-}
-
-input[type="submit"] {
-  width: 100%;
-  height: 60px; /* Increased height */
-  background: #2691d9;
-  border-radius: 30px; /* Slightly rounded button */
-  font-size: 20px; /* Larger font size */
-  color: #e9f4fb;
-  font-weight: 700;
-  cursor: pointer;
-  outline: none;
-  transition: 0.5s;
-  border: none;
-}
-
-input[type="submit"]:hover {
-  border-color: #2691d9;
-}
-
-.signup-prompt {
-  margin: 30px 0;
-  text-align: center;
-  font-size: 18px; /* Larger font size */
-  color: #666666;
-}
-
-.signup-prompt a {
-  color: #2691d9;
-  text-decoration: none;
-}
-
-.signup-prompt a:hover {
-  text-decoration: underline;
-}
-
-@media(min-width: 480px) {
-  .wrapper {
-    max-width: 700px; /* Further increased width for larger screens */
-    padding: 20px; /* Adjusted padding for better spacing */
-  }
-}
-
-</style>
-    <div class="wrapper">
-      <h1>Login</h1>
-      <form method="post">
-        <div class="field-group">
-          <input type="text" required />
-          <span></span>
-          <label>Username</label>
+    <!-- Login Form Section -->
+    <section class="unique-container">
+      <div class="unique-image-form-wrapper">
+        <!-- Left Image Section -->
+        <div class="unique-image-container">
+          <img src="./13377c0dfb5e4adbfec1d646f20c9206.png" alt="Login Image">
         </div>
-        <div class="field-group">
-          <input type="password" required />
-          <span></span>
-          <label>Password</label>
+  
+        <!-- Login Form Section -->
+        <div class="unique-login-form">
+          <h2>Login</h2>
+          <p style="color: #E53E3E;">Welcome Back to Shivshakti PG</p>
+          <form>
+            <label for="unique-email">Email</label>
+            <input type="email" id="unique-email" name="unique-email" placeholder="Your Email" required>
+  
+            <label for="unique-password">Password</label>
+            <input type="password" id="unique-password" name="unique-password" placeholder="Your Password" required>
+  
+            <button type="submit">Login</button>
+          </form>
+          <p class="unique-register-link">Don't have an account? <a href="#">Register here</a></p>
         </div>
-        <input type="submit" value="Login" />
-        <div class="signup-prompt">Not a member? <a href="#">Signup</a></div>
-      </form>
-    </div>
+      </div>
+    </section>
+    <!-- Bootstrap & Font Awesome Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  
 
-    
-  </body>
+
+
+  <script src="./javascript/nav.js"></script>
+ 
+
+
+
+
+</body>
+
 </html>

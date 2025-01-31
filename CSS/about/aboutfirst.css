@@ -1,0 +1,51 @@
+
+/* Styling for the About Us Header */
+.about-us-header {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(145deg, #ff9a8b, #ff6a88);
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.about-us-heading {
+  font-size: 3rem;
+  color: white;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.about-us-description {
+  font-size: 1.2rem;
+  color: #fff;
+  line-height: 1.6;
+  margin-top: 0;
+  text-align: justify;
+}
+
+/* Responsive Typography and Padding */
+@media (max-width: 768px) {
+  .about-us-heading {
+    font-size: 2.2rem;
+  }
+
+  .about-us-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-us-header {
+    padding: 60px 15px;
+  }
+
+  .about-us-heading {
+    font-size: 1.8rem;
+  }
+
+  .about-us-description {
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,157 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Importing Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@500&display=swap');
+
+    .pgmap-container {
+      height: 100vh;
+      display: flex;
+      flex-wrap: nowrap;
+    }
+
+    /* Attractive Heading Style */
+    .pgmap-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 15px;
+      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      background: linear-gradient(45deg, #FF6347, #FF4500);
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: glow 1.5s ease-in-out infinite alternate;
+      text-shadow: 0 0 10px rgba(255, 99, 71, 0.6), 0 0 30px rgba(255, 99, 71, 0.8), 0 0 40px rgba(255, 99, 71, 1);
+    }
+
+    .pgmap-heading span {
+      color: #FF4500;
+    }
+
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 10px rgba(255, 99, 71, 0.6), 0 0 20px rgba(255, 99, 71, 0.8), 0 0 30px rgba(255, 99, 71, 1);
+      }
+
+      100% {
+        text-shadow: 0 0 20px rgba(255, 99, 71, 0.8), 0 0 40px rgba(255, 99, 71, 1), 0 0 60px rgba(255, 99, 71, 1);
+      }
+    }
+
+    .pgmap-image-gallery {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 20px;
+      height: 100%;
+      justify-content: space-between;
+    }
+
+    .pgmap-image-gallery img {
+      width: 100%;
+      height: 43%;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+
+    .gsap-animate {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    .pgmap-map-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      margin-top: 20px; /* Added margin to give consistent gap */
+    }
+
+    #pgmap {
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .pgmap-map-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .pgmap-container {
+        flex-direction: column;
+      }
+
+      .pgmap-image-gallery {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 10px;
+      }
+
+      .pgmap-image-gallery img {
+        height: 33.33%;
+        width: 33.33%;
+        object-fit: cover;
+      }
+
+      .pgmap-heading {
+        font-size: 1rem;
+        text-align: center;
+      }
+
+      .pgmap-map-container {
+        height: 600px; /* Double the map height on small screens */
+        margin-top: 30px; /* Increase the gap between images and map */
+      }
+
+      .pgmap-map-iframe {
+        height: 100%;
+      }
+    }
+
+    @media (max-width: 468px) {
+      .pgmap-container {
+        flex-direction: column;
+      }
+
+      .pgmap-image-gallery {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .pgmap-image-gallery img {
+        height: 250px;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .pgmap-heading {
+        font-size: 1rem;
+        text-align: center;
+      }
+
+      .pgmap-map-container {
+        height: 400px; /* Double the map height on small screens */
+        margin-top: 30px; /* Increase the gap between images and map */
+      }
+
+      .pgmap-map-iframe {
+        height: 100%;
+      }
+    }
+  

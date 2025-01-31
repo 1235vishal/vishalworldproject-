@@ -1,0 +1,147 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+    background-color: #FFFFFF;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif; /* User-friendly font */
+}
+
+/* Main Container */
+.pg-listings-container {
+    background-color:#FFFFFF;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+/* Left Section (PG Listings) */
+.pg-listings-grid-section {
+  width: 50%;
+  background-color: #f9f9f9;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Heading */
+.pg-listings-heading {
+  font-size: 2rem;
+  font-weight: 600; /* Slightly bold */
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.pg-listings-highlight {
+  color: #e63946;
+  font-weight: 700;
+}
+
+/* Grid Layout */
+.pg-listings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.pg-listings-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  aspect-ratio: 1;
+  transition: transform 0.3s ease;
+}
+
+.pg-listings-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.pg-listings-card:hover {
+  transform: scale(1.05);
+}
+
+.pg-listings-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Right Section (Map) */
+.pg-listings-map-section {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pg-listings-iframe {
+  width: 90%;
+  height: 90%;
+  border: 0;
+  border-radius: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .pg-listings-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .pg-listings-grid-section, 
+  .pg-listings-map-section {
+    width: 100%;
+  }
+
+  .pg-listings-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pg-listings-heading {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .pg-listings-map-section {
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .pg-listings-iframe {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pg-listings-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pg-listings-heading {
+    font-size: 1.5rem;
+  }
+
+  .pg-listings-iframe {
+    width: 100%;
+    height: 250px;
+  }
+}
